@@ -9,7 +9,8 @@ import SwiftUI
 
 struct LoginView: View {
     let gradient = Gradient(colors: [Color("Green"), Color("DarkGreen")])
-
+    @State private var scaleVal: Double = 0.0
+    @State private var rotation: Double = 0.0
    
     var body: some View {
         VStack{
@@ -28,7 +29,17 @@ struct LoginView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: .infinity, maxHeight: 350)
-            
+                .scaleEffect(scaleVal)
+                .rotationEffect(Angle(degrees: rotation))
+                .onAppear{
+                    withAnimation(.linear(duration: 1).speed(0.4)){
+                        scaleVal = 0.8
+                    }
+                    withAnimation(.linear(duration: 1.5).speed(0.4).repeatForever(autoreverses: true)){
+                        scaleVal = 0.92
+                    }
+                }
+        
             Spacer()
                 .frame(height: 30)
             

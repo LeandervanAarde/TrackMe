@@ -20,14 +20,27 @@ struct SplashScreen: View {
                 .foregroundColor(.white)
             Spacer()
                 .frame(height: 20)
-            Text("🧭")
-                .font(.system(size: 120))
-                .rotationEffect(Angle(degrees: isRotating))
-                .onAppear{
-                    withAnimation(.linear(duration: 1).speed(0.4).repeatForever(autoreverses: true)){
-                        isRotating = 25.0
+
+            
+            ZStack{
+                Image("CompassOuter")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity, maxHeight: 190, alignment: .center)
+                    .padding(.bottom, 29)
+                Image("CompassInner")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity, maxHeight: 125)
+                    .rotationEffect(Angle(degrees: isRotating), anchor: .center)
+                    .onAppear {
+                        withAnimation(.linear(duration: 1).speed(0.4).repeatForever(autoreverses: true)) {
+                            isRotating = 25.0
+                        }
                     }
-                }
+            }
+            Spacer()
+                .frame(height: 30)
             Ellipse()
                 .fill(
                     LinearGradient(gradient: Gradient(stops: [
