@@ -16,7 +16,7 @@ struct TrackMeApp: App {
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
 //            LoginView()
-            SplashScreen()
+            LoginView()
         }
     }
 }
