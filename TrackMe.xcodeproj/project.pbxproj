@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E53D8AE2A7B008D0002AD88 /* OnBoardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E53D8AD2A7B008D0002AD88 /* OnBoardingModel.swift */; };
+		6E53D8B12A7B01110002AD88 /* OnboardingVm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E53D8B02A7B01110002AD88 /* OnboardingVm.swift */; };
 		6EE706AA2A79ADEE0071C06B /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE706A92A79ADEE0071C06B /* DashboardView.swift */; };
 		6EE706AC2A79C8D60071C06B /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE706AB2A79C8D60071C06B /* Onboarding.swift */; };
 		6EEEAB282A75A33A00BE04CB /* TrackMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEEAB272A75A33A00BE04CB /* TrackMeApp.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E53D8AD2A7B008D0002AD88 /* OnBoardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingModel.swift; sourceTree = "<group>"; };
+		6E53D8B02A7B01110002AD88 /* OnboardingVm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVm.swift; sourceTree = "<group>"; };
 		6EE706A92A79ADEE0071C06B /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		6EE706AB2A79C8D60071C06B /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		6EEEAB242A75A33A00BE04CB /* TrackMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +48,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E53D8AC2A7B00400002AD88 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6E53D8AD2A7B008D0002AD88 /* OnBoardingModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6E53D8AF2A7B00FC0002AD88 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				6E53D8B02A7B01110002AD88 /* OnboardingVm.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		6EEEAB1B2A75A33A00BE04CB = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +83,8 @@
 		6EEEAB262A75A33A00BE04CB /* TrackMe */ = {
 			isa = PBXGroup;
 			children = (
+				6E53D8AF2A7B00FC0002AD88 /* ViewModels */,
+				6E53D8AC2A7B00400002AD88 /* Models */,
 				6EEEAB3A2A75A4A900BE04CB /* Views */,
 				6EEEAB272A75A33A00BE04CB /* TrackMeApp.swift */,
 				6EEEAB292A75A33A00BE04CB /* ContentView.swift */,
@@ -168,9 +190,11 @@
 				6EEEAB312A75A33B00BE04CB /* Persistence.swift in Sources */,
 				6EE706AA2A79ADEE0071C06B /* DashboardView.swift in Sources */,
 				6EEEAB2A2A75A33A00BE04CB /* ContentView.swift in Sources */,
+				6E53D8AE2A7B008D0002AD88 /* OnBoardingModel.swift in Sources */,
 				6EEEAB282A75A33A00BE04CB /* TrackMeApp.swift in Sources */,
 				6EE706AC2A79C8D60071C06B /* Onboarding.swift in Sources */,
 				6EEEAB342A75A33B00BE04CB /* TrackMe.xcdatamodeld in Sources */,
+				6E53D8B12A7B01110002AD88 /* OnboardingVm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

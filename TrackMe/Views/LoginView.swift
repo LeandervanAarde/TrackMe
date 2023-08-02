@@ -14,10 +14,7 @@ struct LoginView: View {
     @State var isActive: Bool = false
    
     var body: some View {
-        ZStack{
-            if !self.isActive {
-                SplashScreen()
-            } else{
+
                 VStack{
                     Text("WELCOME TO")
                         .font(.subheadline)
@@ -107,15 +104,6 @@ struct LoginView: View {
                     ]), startPoint: .bottomTrailing, endPoint: .topLeading))
 
                 .padding(0)
-                }
-            }
-        .onAppear{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5){
-                withAnimation{
-                    self.isActive = true
-                }
-            }
-        }
     }
 }
     
