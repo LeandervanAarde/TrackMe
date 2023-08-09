@@ -17,30 +17,26 @@ struct ContentView: View {
     private var items: FetchedResults<Item>
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
-                }
-                .onDelete(perform: deleteItems)
+        TabView{
+            DashboardView()
+            .tabItem{
+                Label("Home", systemImage: "house.fill")
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
+            
+//            Text("Countries")
+            Groups()
+                .tabItem{
+                Label("Countries", systemImage: "person.3.fill")
             }
-            Text("Hey there an item")
+                        
+            ProfileView()
+            .tabItem{
+                Label("Feed", systemImage: "person")
+            }
         }
+        .accentColor(Color("Green"))
     }
+    
 
     private func addItem() {
         withAnimation {
@@ -86,3 +82,32 @@ struct ContentView_Previews: PreviewProvider {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+
+
+//import SwiftUI
+//import FirebaseCore
+//
+//
+//class AppDelegate: NSObject, UIApplicationDelegate {
+//  func application(_ application: UIApplication,
+//                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+//    FirebaseApp.configure()
+//
+//    return true
+//  }
+//}
+//
+//@main
+//struct YourApp: App {
+//  // register app delegate for Firebase setup
+//  @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+//
+//
+//  var body: some Scene {
+//    WindowGroup {
+//      NavigationView {
+//        ContentView()
+//      }
+//    }
+//  }
+//}

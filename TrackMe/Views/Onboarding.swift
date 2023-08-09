@@ -16,16 +16,11 @@ struct Onboarding: View {
     var body: some View {
         NavigationView {
             ZStack{
-                
-                if !self.isActive {
-                    SplashScreen()
-                } else{
-                    
-                    VStack {
-                        Image(vm.OnBoardingSteps[vm.counter].imageSource)
-                            .resizable()
-                            .frame(maxWidth: .infinity)
-                            .aspectRatio(contentMode: .fit)
+                VStack {
+                    Image(vm.OnBoardingSteps[vm.counter].imageSource)
+                        .resizable()
+                        .frame(maxWidth: .infinity)
+                        .aspectRatio(contentMode: .fit)
                             .scaleEffect(scaleVal)
                             .onAppear {
                                 withAnimation(.linear(duration: 1).speed(0.4)) {
@@ -74,14 +69,10 @@ struct Onboarding: View {
                     }
                 }
             }
-        }
         .navigationViewStyle(StackNavigationViewStyle())
         .fullScreenCover(isPresented: $vm.showNextScreen, content: LoginView.init)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
-    
-    
-
 }
 
 

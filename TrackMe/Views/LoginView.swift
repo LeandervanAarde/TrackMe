@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import _AuthenticationServices_SwiftUI
+
 
 struct LoginView: View {
     let gradient = Gradient(colors: [Color("Green"), Color("DarkGreen")])
     @State private var scaleVal: Double = 0.0
     @State private var rotation: Double = 0.0
     @State var isActive: Bool = false
+    
    
     var body: some View {
 
@@ -53,9 +56,7 @@ struct LoginView: View {
                             .frame(maxWidth: 18, maxHeight: 20)
                             .padding(10)
                         // Make the Image stretch to full width
-                        
-         
-                        
+
                         Text("Sign in with Apple Account")
                             .font(.system(size: 15))
                             .padding(.vertical, 20)
@@ -63,10 +64,12 @@ struct LoginView: View {
                             .foregroundColor(Color.black)
                              // Make the Text stretch to full width
                     }
-                   
+
                     .background(Color.white)
                     .clipShape(RoundedRectangle(cornerRadius: 5))
                     .padding(10)
+                    
+                   
                     
                     HStack{
                         VStack{
