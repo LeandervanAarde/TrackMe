@@ -52,7 +52,7 @@ struct SplashScreen: View {
                     Ellipse()
                         .fill(
                             LinearGradient(gradient: Gradient(stops: [
-                                Gradient.Stop(color: Color("DarkGreeb"), location: 0.7),
+                                Gradient.Stop(color: Color("DarkGreen"), location: 0.7),
                                 Gradient.Stop(color: .black, location: 1.1),
                             ]), startPoint: .top, endPoint: .bottom)
                         )
@@ -81,7 +81,7 @@ struct SplashScreen: View {
                     vm.navigateToNextScreen(hasOpened: hasOpened)
                         self.isActive = true
                     }
-                UserDefaults.standard.set(false, forKey: "hasOpened")
+                UserDefaults.standard.set(true, forKey: "hasOpened")
                 
                 }
             }

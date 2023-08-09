@@ -26,15 +26,16 @@ struct ContentView: View {
 //            Text("Countries")
             Groups()
                 .tabItem{
-                Label("Countries", systemImage: "person.3.fill")
+                Label("Groups", systemImage: "person.3.fill")
             }
                         
             ProfileView()
             .tabItem{
-                Label("Feed", systemImage: "person")
+                Label("Profile", systemImage: "person")
             }
         }
         .accentColor(Color("Green"))
+        .preferredColorScheme(.light)
     }
     
 

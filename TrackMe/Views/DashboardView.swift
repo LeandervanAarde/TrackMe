@@ -18,7 +18,6 @@ struct DashboardView: View {
         @State var displayReady = true
         if(displayReady){
             VStack {
-              
                 VStack {
                     
                     HStack{
@@ -84,11 +83,8 @@ struct DashboardView: View {
                 .frame(maxWidth: .infinity, maxHeight: 900, alignment: .top)
                 .padding(20)
                 .background(Color.white)
-    //            .cornerRadius(radius: 170.0, corners: [.topLeft])
-              
 
             }
-
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
 
             .background(Color("Green"))

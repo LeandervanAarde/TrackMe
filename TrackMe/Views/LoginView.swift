@@ -14,8 +14,8 @@ struct LoginView: View {
     @State private var scaleVal: Double = 0.0
     @State private var rotation: Double = 0.0
     @State var isActive: Bool = false
+    @ObservedObject var viewModel: AuthenticationViewModel = AuthenticationViewModel()
     
-   
     var body: some View {
 
                 VStack{
@@ -49,27 +49,15 @@ struct LoginView: View {
                     Spacer()
                         .frame(height: 30)
                     
-                    
-                    HStack {
-                        Image("AppleLogo")
-                            .resizable()
-                            .frame(maxWidth: 18, maxHeight: 20)
-                            .padding(10)
-                        // Make the Image stretch to full width
-
-                        Text("Sign in with Apple Account")
-                            .font(.system(size: 15))
-                            .padding(.vertical, 20)
-                            .padding(.trailing, 10)
-                            .foregroundColor(Color.black)
-                             // Make the Text stretch to full width
+                    SignInWithAppleButton{requeest in
+                        viewModel.handleSignInWithAppleRequest(requeest)
+                    } onCompletion: { result in
+                        viewModel.handleSignInWithAppleCompletion(result)
                     }
-
-                    .background(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 5))
-                    .padding(10)
-                    
-                   
+                    .frame(maxHeight: 50)
+                    .padding(.horizontal, 50)
+                    Spacer()
+                        .frame(height: 20)
                     
                     HStack{
                         VStack{
@@ -88,7 +76,6 @@ struct LoginView: View {
                                 .overlay(Color.white)
                                 .padding(.trailing, 50)
                         }
-               
                     }
                     
                     Spacer()

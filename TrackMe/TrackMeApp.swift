@@ -6,18 +6,37 @@
 //
 
 import SwiftUI
+import FirebaseCore
+
+////
+//class AppDelegate: NSObject, UIApplicationDelegate {
+//  func application(_ application: UIApplication,
+//                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+//    FirebaseApp.configure()
+//
+//    return true
+//  }
+//}
+
 
 @main
 struct TrackMeApp: App {
-    let persistenceController = PersistenceController.shared
+    init() {
+        FirebaseApp.configure()
+    }
+    let persistenceController = PersistenceController.shared    
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-//            LoginView()
-
-//            NavigationBar()
+//            ContentView()
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            SelectGroupTypeView()
+            
+//            SplashScreen()
+//            DashboardView()
+            
         }
+        
     }
 }
 
