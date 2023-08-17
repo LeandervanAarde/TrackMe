@@ -8,6 +8,15 @@
 import SwiftUI
 
 struct SelectGroupTypeView: View {
+    @State var selectedGroupType: GroupType = GroupType()
+    private var groups: [GroupType] = [
+        GroupType(type: "Festivals", image: "Festivals"),
+        GroupType(type: "Parties", image: "Parties"),
+        GroupType(type: "Stores/Malls", image: "Stores"),
+        GroupType(type: "Restaurants", image: "Restaurants"),
+        GroupType(type: "Gyms and Excersize", image: "Excersize"),
+        GroupType(type: "Education/Study Groups", image: "StudyGroup")
+    ]
     var body: some View {
         VStack{
         Text("Create Group")
@@ -18,80 +27,31 @@ struct SelectGroupTypeView: View {
             .font(.subheadline)
             .frame(maxWidth: .infinity)
             
-            Grid(){
-                GridRow{
-                    Button {
-                        print("Edit button was tapped")
-                    } label: {
-                        VStack{
-                            Image("Festivals")
-                                .resizable()
-                            Text("Festivals")
-                        }
-                        
-                    }
-                    
-                    Button {
-                        print("Edit button was tapped")
-                    } label: {
-                        VStack{
-                            Image("Parties")
-                                .resizable()
-                            Text("Parties")
-                        }
-                    }
-                }
-                
-                GridRow{
-                    Button {
-                        print("Edit button was tapped")
-                    } label: {
-                        VStack{
-                            Image("Stores")
-                                .resizable()
-                            Text("Stores/Malls")
-                        }
-                        
-                    }
-                    
-                    Button {
-                        print("Edit button was tapped")
-                    } label: {
-                        VStack{
-                            Image("Restaurants")
-                                .resizable()
-                            Text("Restaurants")
+            ForEach(0..<groups.count/2) { row in
+                HStack {
+                    ForEach(0..<2) { column in
+                        let index = row * 2 + column
+                        if index < groups.count {
+                            Button {
+                                self.selectedGroupType = GroupType(type: groups[index].type, image: groups[index].image)
+                                print(groups[index])
+                            } label: {
+                                NavigationLink(destination: GroupCreationView(groupType: $selectedGroupType)) {
+                                    VStack{
+                                        Image(groups[index].image ?? "")
+                                            .resizable()
+                                            .scaledToFit()
+                                        Text(groups[index].type ?? "")
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                }
+                            }
                         }
                     }
                 }
-                
-                GridRow{
-                    Button {
-                        print("Edit button was tapped")
-                    } label: {
-                        VStack{
-                            Image("Excersize")
-                                .resizable()
-                            
-                            Text("Gyms and Excersze")
-                        }
-                    }
-                    
-                    Button {
-                        print("Edit button was tapped")
-                    } label: {
-                        VStack{
-                            Image("StudyGroup")
-                                .resizable()
-                             
-                            Text("Education/Study")
-                        }
-                    }
-                }
-
-            } // End of Grid
-
-        } // End of VStack
+            }
+        }
+        .navigationBarHidden(true)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(20)
     }

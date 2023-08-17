@@ -4,7 +4,6 @@
 //
 //  Created by Leander Van Aarde on 10/08/2023.
 //
-
 import Foundation
 
 struct personModel:   Decodable{
@@ -14,4 +13,5 @@ struct personModel:   Decodable{
     var foundFriends: Int
     var profileImage: String
     var fromWhere: String
+    var Friends: Int
 }

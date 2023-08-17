@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct GroupsModel: Identifiable {
-    var id = UUID()
+struct GroupsModel: Decodable {
     var GroupName: String
-    var GroupMembers: [personModel]?
+    var GroupMembers: [String]?
     var GroupImage: String
+    var GroupCode: String
 }

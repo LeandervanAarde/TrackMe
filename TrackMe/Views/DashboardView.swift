@@ -22,7 +22,6 @@ struct DashboardView: View {
         if(displayReady){
             VStack {
                 VStack {
-                    
                     HStack{
                         Text("Hello")
                             .foregroundColor(Color.black)

@@ -21,8 +21,13 @@ class UsersViewModel: ObservableObject{
 
     func createNewUser(userName: String, userId: String){
         var data:[String: Any] = [:]
-        
         data["username"] = userName
+        data["latitude"] = ""
+        data["longitude"] = ""
+        data["foundFriends"] = 0
+        data["profileImage"] = "https://firebasestorage.googleapis.com/v0/b/trackme-7f739.appspot.com/o/default-avatar-profile-icon-symbol-for-website-vector-46547084.jpg?alt=media&token=5ef3ec6e-5ccf-45b9-91df-a5a36ccb701e"
+        data["fromWhere"] = ""
+        data["Friends"] = 0
         db.collection("users").document(userId).setData(data)
     }
     

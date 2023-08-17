@@ -11,11 +11,11 @@ import MapKit
 struct Groups: View {
     
     private var myGroups: [GroupsModel] = [
-        GroupsModel(GroupName: "Dancing Queen", GroupMembers: nil, GroupImage: "Festivals"),
-        GroupsModel(GroupName: "Natashas night out", GroupMembers: nil, GroupImage: "Parties"),
-        GroupsModel(GroupName: "Shoppin!", GroupMembers: nil, GroupImage: "Stores"),
-        GroupsModel(GroupName: "Yum time", GroupMembers: nil, GroupImage: "Restaurants"),
-        GroupsModel(GroupName: "Rave out!", GroupMembers: nil, GroupImage: "Festivals")
+        GroupsModel(GroupName: "Dancing Queen", GroupMembers: nil, GroupImage: "Festivals", GroupCode: "1232132"),
+        GroupsModel(GroupName: "Natashas night out", GroupMembers: nil, GroupImage: "Parties", GroupCode: "1232132"),
+        GroupsModel(GroupName: "Shoppin!", GroupMembers: nil, GroupImage: "Stores", GroupCode: "1232132"),
+        GroupsModel(GroupName: "Yum time", GroupMembers: nil, GroupImage: "Restaurants", GroupCode: "1232132"),
+        GroupsModel(GroupName: "Rave out!", GroupMembers: nil, GroupImage: "Festivals", GroupCode: "1232132")
     ]
     var body: some View {
         VStack{
