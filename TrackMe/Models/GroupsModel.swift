@@ -10,5 +10,6 @@ import Foundation
 struct GroupsModel: Identifiable {
     var id = UUID()
     var GroupName: String
-    var GroupMembers: [personModel]
+    var GroupMembers: [personModel]?
+    var GroupImage: String
 }

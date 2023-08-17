@@ -69,7 +69,7 @@ class HealthKitManager: ObservableObject {
                 let date = statistics.startDate
                 let dayOfWeek = dateFormatter.string(from: date)
                 self.weeklySteps.append(StepsModel(day: dayOfWeek, steps: steps))
-                    print("\(dayOfWeek) - \(steps)")
+//                    print("\(dayOfWeek) - \(steps)")
                 }
             }
         }

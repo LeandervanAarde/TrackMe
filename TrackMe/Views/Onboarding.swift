@@ -57,10 +57,7 @@ struct Onboarding: View {
                         ]), startPoint: .bottomTrailing, endPoint: .topLeading)
                     )
                     .padding(0)
-                    
-                    
                 }
-                
             }
             .onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.5){
@@ -74,7 +71,6 @@ struct Onboarding: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
-
 
 struct Onboarding_Previews: PreviewProvider {
     static var previews: some View {

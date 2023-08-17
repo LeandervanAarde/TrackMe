@@ -9,10 +9,29 @@ import SwiftUI
 
 class NavigationNavigationVm: ObservableObject {
     @Published var nextScreen: AnyView = AnyView(EmptyView())
-
+    @ObservedObject var authVm: AuthenticationViewModel = AuthenticationViewModel()
+    @Published  var userID: String = ""
+    
+    init(){
+        fetchUserID()
+        
+    }
+    
+    func fetchUserID() {
+        authVm.getUserId { userID in
+               DispatchQueue.main.async {
+                   self.userID = userID
+                   print(userID)
+               }
+           }
+       }
+       
     func navigateToNextScreen(hasOpened: Bool) {
         if hasOpened {
-            nextScreen = AnyView(LoginView())
+            if(userID == ""){
+                nextScreen = AnyView(LoginView())
+            }
+            nextScreen = AnyView(ContentView())
         } else {
             nextScreen = AnyView(Onboarding())
         }

@@ -12,10 +12,13 @@ import Combine
 struct DashboardView: View {
     let passthroughSubject = PassthroughSubject<Bool, Never>()
     @StateObject var healthKitManager = HealthKitManager()
+    @ObservedObject var viewModel: AuthenticationViewModel = AuthenticationViewModel()
+    @ObservedObject var userVm: UsersViewModel = UsersViewModel()
     var body: some View {
         @State var stepsData = healthKitManager.weeklySteps
         @State var showChart = false
         @State var displayReady = true
+        
         if(displayReady){
             VStack {
                 VStack {
@@ -24,7 +27,7 @@ struct DashboardView: View {
                         Text("Hello")
                             .foregroundColor(Color.black)
                             .font(.largeTitle)
-                        Text("Leander 👋")
+                        Text(" \(userVm.userDetails?.username ?? "")👋")
                             .foregroundColor(Color.black)
                             .font(.largeTitle)
                             .fontDesign(.serif)
@@ -89,14 +92,12 @@ struct DashboardView: View {
 
             .background(Color("Green"))
             .onAppear{
-                print("HERE: \(healthKitManager.weeklySteps)")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-        
-                    print("HERE: \(healthKitManager.weeklySteps)")
                     stepsData = healthKitManager.weeklySteps
                     showChart = true
 
                     }
+        
             }
             
         } else{

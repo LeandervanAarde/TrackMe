@@ -7,9 +7,8 @@
 
 import Foundation
 
-struct personModel: Identifiable {
-    var id = UUID()
-    var name: String
+struct personModel:   Decodable{
+    var username: String
     var latitude: String
     var longitude: String
     var foundFriends: Int

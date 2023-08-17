@@ -51,13 +51,21 @@ extension AuthenticationViewModel {
         request.nonce = sha256(nonce)
     }
     
-    func handleSignInWithAppleCompletion(_ result: Result<ASAuthorization, Error>){
+    func getUserId(completion: @escaping (String) -> Void) {
+         guard let currentUser = Auth.auth().currentUser else {
+             completion("")
+             return
+         }
+         let userID = currentUser.uid
+         completion(userID)
+     }
+    
+    func handleSignInWithAppleCompletion(_ result: Result<ASAuthorization, Error>) {
         if case .failure(let failure) = result {
             errorMessage = failure.localizedDescription
-        }
-        else if case.success(let success) = result {
-            if let appleIDCredential = success.credential as? ASAuthorizationAppleIDCredential{
-                guard let nonce = currentNonce else{
+        } else if case .success(let success) = result {
+            if let appleIDCredential = success.credential as? ASAuthorizationAppleIDCredential {
+                guard let nonce = currentNonce else {
                     fatalError("Invalid state: a login callback was received, but no login request was sent.")
                 }
                 
@@ -66,7 +74,7 @@ extension AuthenticationViewModel {
                     return
                 }
                 
-                guard let idTokenString = String(data: appleIdToken, encoding: .utf8) else{
+                guard let idTokenString = String(data: appleIdToken, encoding: .utf8) else {
                     print("unable to stringify")
                     return
                 }
@@ -77,27 +85,30 @@ extension AuthenticationViewModel {
                     do {
                         if let appleIDCredential = success.credential as? ASAuthorizationAppleIDCredential {
                             print("Credential: \(appleIDCredential)")
-                            // ... rest of the code ...
                         }
                         
                         let result = try await Auth.auth().signIn(with: credential)
-//
-                        if let fullName = appleIDCredential.fullName {
-                            print("Given Name: \(fullName.givenName ?? "")")
-                            print("Family Name: \(fullName.familyName ?? "")")
-                            viewModel.createNewUser(userName: fullName.givenName ?? "", userId: result.user.uid)
-                                                // ... rest of the code ...
-                            } else {
-                                print("Full Name not available")
+                        
+                        let userId = result.user.uid
+                        getUserId  { storedUserId in
+                            if storedUserId.isEmpty {
+                                if let fullName = appleIDCredential.fullName {
+                                    self.viewModel.createNewUser(userName: fullName.givenName ?? "", userId: userId)
+                                }
                             }
-                    }
-                    catch{
+                        }
+
+                        authenticationState = .authenticated
+
+                        print(authenticationState)
+                    } catch {
                         print("error \(error.localizedDescription)")
                     }
                 }
             }
         }
     }
+
     
 }
 

@@ -75,7 +75,6 @@ struct ProfileView: View {
             }
 
             .frame(maxWidth: .infinity)// End of information HStack
-            
             Spacer()
                         
             HStack{
