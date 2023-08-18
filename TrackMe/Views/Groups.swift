@@ -55,6 +55,7 @@ struct Groups: View {
                                     VStack {
                                         Image(myGroups[index + 1].GroupImage)
                                             .resizable()
+                                            .scaledToFit()
                                         Text(myGroups[index + 1].GroupName)
                                     }
                                 }
@@ -64,8 +65,6 @@ struct Groups: View {
                     }
                 }
             } // end of VStack
-
-
         } // End of VStack
         .frame(maxWidth: .infinity, maxHeight: .infinity)
  

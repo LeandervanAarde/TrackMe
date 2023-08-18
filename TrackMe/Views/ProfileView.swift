@@ -8,25 +8,23 @@
 import SwiftUI
 
 struct ProfileView: View {
-    var str = randomStringGenerator(length: 6)
     @ObservedObject var userVm: UsersViewModel = UsersViewModel()
+    var image: Image?
+    @State private var model = PhotoPickerModel()
+    @State private var selectedImageURL: URL?
+    
+  
     
     var body: some View {
         NavigationView{
             VStack{
                 HStack{
-                    
-                    AsyncImage(url: URL(string: userVm.userDetails?.profileImage ?? "")){ image in
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 170, height: 179)
-                            .clipShape(Circle())
-                        
-                    } placeholder: {
-                        Text("...")
-                    }
-         
+                    PhotoPicker(imageUrl: $selectedImageURL)
+                        .onAppear {
+                            if selectedImageURL == nil || selectedImageURL!.absoluteString.isEmpty {
+                                selectedImageURL = URL(string: "default_profile_image_url_here")
+                            }
+                        }
                     VStack{
                         Text(userVm.userDetails?.username ?? "")
                             .font(.title2)
@@ -87,18 +85,6 @@ struct ProfileView: View {
                 .frame(maxWidth: .infinity)// End of information HStack
                 Spacer()
                             
-                HStack{
-                    Button(action: {}){
-                        Text("Add profile Image")
-                            .padding(.vertical, 7)
-                            .padding(.horizontal, 10)
-                            .background(Color("LightGray"))
-                            .foregroundColor(Color("ProfileButtonTextGray"))
-                            .cornerRadius(8)
-                            .frame(maxHeight: 20)
-                    }
-                } //HStack for buttons
-                
                 Spacer()
                   
                 //Spacer for button and green stack
@@ -158,19 +144,19 @@ struct ProfileView: View {
             }
             .preferredColorScheme(.light)
         }
+        .onChange(of: selectedImageURL) { newValue in
+            Task {
+                if let newURL = newValue {
+                    try await userVm.updateUserProfileImage(profileImage: newURL)
+                }
+            }
+        }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .preferredColorScheme(.light)
     }
 }
 
-func randomStringGenerator(length: Int) -> String {
-    let base = "abcdefghijklmopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
-    var s = ""
-    for _ in 0..<length {
-        s.append(base.randomElement()!)
-    }
-    return s
-}
+
 
 struct CornerRadiusShape: Shape {
     var radius = CGFloat.infinity
@@ -198,8 +184,8 @@ extension View {
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView()
-    }
-}
+//struct ProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+////        ProfileView()
+//    }
+//}

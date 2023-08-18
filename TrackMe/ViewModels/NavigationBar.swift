@@ -16,10 +16,10 @@ struct NavigationBar: View {
             }
             
 //            Text("Countries")
-            ProfileView()
-                .tabItem{
-                Label("Countries", systemImage: "globe.europe.africa")
-            }
+//            ProfileView()
+//                .tabItem{
+//                Label("Countries", systemImage: "globe.europe.africa")
+//            }
             
             ContentView()
             .tabItem{

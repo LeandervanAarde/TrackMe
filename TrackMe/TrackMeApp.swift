@@ -30,11 +30,9 @@ struct TrackMeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ProfileView()
-            //LoginScree
+            SplashScreen()
             
         }
-        
     }
 }
 

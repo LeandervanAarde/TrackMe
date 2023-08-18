@@ -14,6 +14,7 @@ class UsersViewModel: ObservableObject{
     
     private var db = Firestore.firestore()
     @Published var userDetails: personModel?
+    @StateObject private var viewmodel = ImageUploadManager()
     
     init(){
         getUserDetails()
@@ -49,6 +50,34 @@ class UsersViewModel: ObservableObject{
                     self.userDetails = userData
                 } else {
                     print("Problem with decoding document \(userId)")
+                }
+            }
+        }
+    }
+    
+    func updateUserProfileImage(profileImage: URL?) async throws{
+        do{
+            guard let imageURL = profileImage else {
+                print("Error invalid URL")
+                return
+            }
+            
+            try await viewmodel.uploadImage(fromURL: imageURL){ [self](uri, error) in
+                if let error = error{
+                    print("Error desc:", error.localizedDescription)
+                    
+                } else if let uri = uri{
+                    print("uploaded image:", uri)
+                    let docref = db.collection("users").document(getUserId())
+                    
+                    docref.updateData(["profileImage": uri.absoluteString]){error in
+                        if let error = error{
+                            print("error here", error.localizedDescription)
+                        } else{
+                            print("Document updated.")
+                        }
+                    }
+                    
                 }
             }
         }

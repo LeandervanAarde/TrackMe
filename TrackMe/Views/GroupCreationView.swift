@@ -10,10 +10,11 @@ import SwiftUI
 struct GroupCreationView: View {
     @Binding var groupType: GroupType
     @State var groupTypeString: String = ""
+    @ObservedObject var groupVm: GroupsViewModel = GroupsViewModel()
     var body: some View {
         VStack{
             
-            Image(groupType.image ?? "")
+            Image(groupType.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: 300)
@@ -32,7 +33,7 @@ struct GroupCreationView: View {
             Spacer()
                 .frame(height: 30)
             
-            Button(action: {}) {
+            Button(action: {print(groupVm.createNewGroup(groupName: groupTypeString, groupImage: groupType.image , code: groupVm.randomStringGenerator(length: 6)))}) {
                 HStack{
                     Text("Create Group")
                         .padding(.vertical, 7)
@@ -67,7 +68,14 @@ struct GroupCreationView: View {
     }
 }
 
-
+func randomStringGenerator(length: Int) -> String {
+    let base = "abcdefghijklmopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+    var s = ""
+    for _ in 0..<length {
+        s.append(base.randomElement()!)
+    }
+    return s
+}
 
 struct GroupCreationView_Previews: PreviewProvider {
     static var previews: some View {
