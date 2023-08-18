@@ -12,7 +12,6 @@ struct PhotoPicker: View {
     
     @Binding var imageUrl: URL?
     @StateObject private var imghelper = ImageUploadManager()
-//    @StateObject private var firebaseStoage = StorageManager()
     @State private var imgUri: URL?
         var body: some View {
             VStack {

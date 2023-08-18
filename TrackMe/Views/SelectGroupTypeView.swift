@@ -45,7 +45,7 @@ struct SelectGroupTypeView: View {
                 }
             }
         }
-        .navigationBarHidden(true)
+     
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(20)
     }
