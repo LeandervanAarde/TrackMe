@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
 struct GroupsModel: Decodable {
+    @DocumentID var id: String?
     var GroupName: String
     var GroupMembers: [String]?
     var GroupImage: String
