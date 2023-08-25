@@ -13,6 +13,7 @@ struct IndividualGroupView: View {
     @StateObject var vm: GroupsViewModel = GroupsViewModel();
     @State var groupData: GroupsModel?
     @State var shouldSHow: Bool = false
+    @State var members: [personModel] = []
     @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
     let locations = [
         Location(name: "Buckingham Palace", coordinate: CLLocationCoordinate2D(latitude: 51.501, longitude: -0.141)),
@@ -33,11 +34,15 @@ struct IndividualGroupView: View {
                         }
                     }
                 }
-                .navigationTitle("London Explorer")
+                .navigationTitle(groupData?.GroupName ?? "CHeck again")
                 .frame(maxHeight: 300 )
                 
                 VStack{
-                    Text(groupData?.GroupName ?? "CHeck again")
+                    List{
+                        ForEach(0..<members.count){index in
+                            Text(members[index].username)
+                        }
+                    }
                 }
          
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -51,6 +56,7 @@ struct IndividualGroupView: View {
             vm.getIndividualGroup(id: groupId! )
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
                 groupData = vm.individualGroup
+                members = vm.groupMembers
                 shouldSHow.toggle()
                 print(String(describing: shouldSHow))
             }

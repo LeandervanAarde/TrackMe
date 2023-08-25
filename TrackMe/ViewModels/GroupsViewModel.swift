@@ -15,6 +15,7 @@ class GroupsViewModel: ObservableObject{
     private var db = Firestore.firestore()
     @Published var userGroups: [GroupsModel] = []
     @Published var individualGroup: GroupsModel?
+    @Published var groupMembers: [personModel] = []
     
     init(){
         getAllUserGroups {documents, error in
@@ -75,17 +76,44 @@ class GroupsViewModel: ObservableObject{
                 print("Error in retrieving document with group details", error.localizedDescription)
                 return
             }
-            
             if let document = document, document.exists{
                 if let groupData = try? document.data(as: GroupsModel.self){
                     self.individualGroup = groupData
+                    if let groupMembers = groupData.GroupMembers{
+                        for member in groupMembers {
+                            getUserDetails(userId: member)
+                        }
+                    }
+                    
                 } else{
                     print("Problem with decoding the Group \(id)")
                 }
             }
         }
     }
+    
+    private func getUserDetails(userId: String) {
+        db.collection("users").document(userId).getDocument { [weak self] document, error in
+            guard let self = self else { return }
 
+            if let error = error {
+                print("Error fetching user details:", error.localizedDescription)
+                return
+            }
+            if let document = document, document.exists {
+                if let userData = try? document.data(as: personModel.self) {
+                    self.groupMembers.append(userData)
+                } else {
+                    print("Problem with decoding document \(userId)")
+                }
+            }
+        }
+    }
+    
+    public func joinNewGroup(code: String){
+        
+    }
+    
     func randomStringGenerator(length: Int) -> String {
         let base = "abcdefghijklmopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
         var s = ""
