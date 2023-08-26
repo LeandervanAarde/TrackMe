@@ -9,6 +9,7 @@ import SwiftUI
 
 struct JoinGroupView: View {
 	@State private var groupCodeEntry: String = ""
+	@ObservedObject var GroupManager: GroupsViewModel = GroupsViewModel()
     var body: some View {
 		
         VStack(spacing: -120){
@@ -39,14 +40,14 @@ struct JoinGroupView: View {
 				Divider()
 					.frame(minHeight: 1)
 					.overlay(Color("Green"))
-			
-				
 				Spacer()
 				
 				HStack{
 					Spacer()
 					Button(action: {
 						print("Hello world! code \(groupCodeEntry)")
+						GroupManager.joinNewGroup(code: groupCodeEntry)
+						
 					}) {
 						Text("Join new Group!")
 					 
@@ -62,7 +63,6 @@ struct JoinGroupView: View {
 				}
             }
 			.padding(45)
-			
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.white)
             .cornerRadius(radius: 120.0, corners: [.topLeft])

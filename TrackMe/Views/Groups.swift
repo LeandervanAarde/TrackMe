@@ -15,7 +15,7 @@ struct Groups: View {
     var body: some View {
         @State var userGroups = GroupManager.userGroups
         NavigationView{
-            VStack{
+            VStack(){
             Text("My Groups")
                 .font(.title)
                 .frame(maxWidth: .infinity)
@@ -30,12 +30,13 @@ struct Groups: View {
                         .frame(maxHeight: 50)
                 } // end of button
                 Spacer()
-                VStack(spacing: 10) {
-                    ForEach(0..<userGroups.count/2, id: \.self) { row in
+                    .frame(maxHeight: 10)
+                VStack(alignment: .leading, spacing: 10)  {
+                    ForEach(0..<userGroups.count, id: \.self) { row in
                         HStack {
                             ForEach(0..<2) { column in
                                 let index = row * 2 + column
-                                if index < groups.count {
+                                if index < userGroups.count {
                                     Button(action: {
                                         self.currentGroupID = userGroups[index].id
                                         self.navigateToIndividual = true
@@ -57,11 +58,21 @@ struct Groups: View {
                     }
                 } // end of VStack
                 .onAppear{
+                    GroupManager.getAllUserGroups { documents, error in
+                            if let error = error {
+                                print(error)
+                            } else if let documents = documents {
+                                GroupManager.userGroups = documents.compactMap { document in
+                                try? document.data(as: GroupsModel.self)
+                                    }
+                            }
+                    }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
                         userGroups = GroupManager.userGroups
                         print(GroupManager.userGroups)
                     }
                 }
+                Spacer()
             } // End of VStack
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.horizontal, 20)

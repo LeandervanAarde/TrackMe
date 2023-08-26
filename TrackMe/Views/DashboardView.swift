@@ -14,9 +14,9 @@ struct DashboardView: View {
     @StateObject var healthKitManager = HealthKitManager()
     @ObservedObject var viewModel: AuthenticationViewModel = AuthenticationViewModel()
     @ObservedObject var userVm: UsersViewModel = UsersViewModel()
+    @State var stepsData: [StepsModel] = []
     var body: some View {
-        @State var stepsData = healthKitManager.weeklySteps
-        @State var showChart = false
+        @State var showChart = true
         @State var displayReady = true
         
         if(displayReady){
@@ -91,12 +91,8 @@ struct DashboardView: View {
 
             .background(Color("Green"))
             .onAppear{
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-                    stepsData = healthKitManager.weeklySteps
-                    showChart = true
-
-                    }
-        
+                stepsData = healthKitManager.weeklySteps
+          
             }
             
         } else{

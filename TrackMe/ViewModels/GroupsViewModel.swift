@@ -52,7 +52,7 @@ class GroupsViewModel: ObservableObject{
         return true
     }
 
-    private func getAllUserGroups(completion: @escaping ([DocumentSnapshot]?, Error?) -> Void) {
+    public func getAllUserGroups(completion: @escaping ([DocumentSnapshot]?, Error?) -> Void) {
         guard let userID = Auth.auth().currentUser?.uid else {
             completion(nil, nil) //
             return
@@ -111,7 +111,33 @@ class GroupsViewModel: ObservableObject{
     }
     
     public func joinNewGroup(code: String){
+        let userID = Auth.auth().currentUser?.uid
+        let groupsRef = db.collection("groups")
         
+        groupsRef.whereField("GroupCode", isEqualTo: code).getDocuments{(snapshot, error) in
+            
+            if let error = error{
+                print("Error \(error.localizedDescription)")
+            }
+            
+            guard let doc = snapshot?.documents.first else {
+                print("Error for group with code \(code)")
+                return
+            }
+            
+            let groupID = doc.documentID
+            let groupRef = groupsRef.document(groupID)
+            
+            groupRef.updateData(["GroupMembers": FieldValue.arrayUnion([userID as Any])]){error in
+                if let error = error {
+                    print("Error upating \(error.localizedDescription)")
+                } else {
+                    print("updated doc")
+                    
+                    
+                }
+            }
+        }
     }
     
     func randomStringGenerator(length: Int) -> String {

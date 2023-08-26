@@ -11,9 +11,11 @@ import MapKit
 struct IndividualGroupView: View {
     @Binding var groupId: String?
     @StateObject var vm: GroupsViewModel = GroupsViewModel();
+    @StateObject var locationManager = LocationManager()
     @State var groupData: GroupsModel?
     @State var shouldSHow: Bool = false
     @State var members: [personModel] = []
+    @State var tracking: MapUserTrackingMode = .follow
     @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
     let locations = [
         Location(name: "Buckingham Palace", coordinate: CLLocationCoordinate2D(latitude: 51.501, longitude: -0.141)),
@@ -23,28 +25,32 @@ struct IndividualGroupView: View {
     var body: some View {
         VStack{
             if(shouldSHow){
-                Map(coordinateRegion: $mapRegion, annotationItems: locations) { location in
-                    MapAnnotation(coordinate: location.coordinate) {
-                        NavigationLink {
-                            Text(location.name)
-                        } label: {
-                            Circle()
-                                .stroke(.red, lineWidth: 3)
-                                .frame(width: 15, height: 15)
-                        }
-                    }
-                }
-                .navigationTitle(groupData?.GroupName ?? "CHeck again")
-                .frame(maxHeight: 300 )
+                Map(
+                    coordinateRegion: $locationManager.region,
+                    interactionModes: MapInteractionModes.all,
+                    showsUserLocation: true,
+                    userTrackingMode: $tracking
+//                    annotationItems: locations
+                   )
+//                { location in
+//                 MapAnnotation(coordinate: location.coordinate) {
+//                     NavigationLink {
+//                         Text(location.name)
+//                     } label: {
+//                         Circle()
+//                             .stroke(.red, lineWidth: 3)
+//                             .frame(width: 15, height: 15)
+//                     }
+//                 }
+//             }
+//                .navigationTitle(groupData?.GroupName ?? "CHeck again")
+//                .frame(maxHeight: 300 )
                 
-                VStack{
-                    List{
-                        ForEach(0..<members.count){index in
-                            Text(members[index].username)
-                        }
+                ScrollView{
+                    ForEach($members, id: \.username) { member in
+                        GroupMemberView(userName: member.username, profileImage: member.profileImage)
                     }
                 }
-         
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else{
                 ProgressView()
@@ -53,6 +59,7 @@ struct IndividualGroupView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onAppear{
+            print(String(describing: locationManager.region.span))
             vm.getIndividualGroup(id: groupId! )
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
                 groupData = vm.individualGroup
@@ -64,11 +71,11 @@ struct IndividualGroupView: View {
     }
 }
 
-//struct IndividualGroupView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        IndividualGroupView(groupId: "W7Jz2hHrx2MNnf8vD3AQ")
-//    }
-//}
+struct IndividualGroupView_Previews: PreviewProvider {
+    static var previews: some View {
+        IndividualGroupView(groupId: .constant("W7Jz2hHrx2MNnf8vD3AQ"))
+    }
+}
 struct Location: Identifiable {
     let id = UUID()
     let name: String

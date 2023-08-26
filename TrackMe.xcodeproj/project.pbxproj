@@ -22,18 +22,19 @@
 		6E179AEB2A8E88DD00C18E89 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 6E179AEA2A8E88DD00C18E89 /* FLAnimatedImage */; };
 		6E27ECEE2A98ABBD00A1030A /* JoinGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E27ECED2A98ABBD00A1030A /* JoinGroupView.swift */; };
 		6E27ECF02A98ADE500A1030A /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E27ECEF2A98ADE500A1030A /* Shapes.swift */; };
+		6E33412D2A9A8BB400C7A3C8 /* GroupMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E33412C2A9A8BB400C7A3C8 /* GroupMemberView.swift */; };
 		6E4385612A8E241A00F1248B /* GroupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4385602A8E241A00F1248B /* GroupsViewModel.swift */; };
 		6E4385632A8E28B000F1248B /* IndividualGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4385622A8E28B000F1248B /* IndividualGroupView.swift */; };
 		6E4B7B8C2A7E732F0080C10A /* SplashScreenNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4B7B8B2A7E732F0080C10A /* SplashScreenNavigation.swift */; };
-		6E4B7B8F2A7EFBD80080C10A /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4B7B8E2A7EFBD80080C10A /* NavigationBar.swift */; };
 		6E4B7B912A7EFC570080C10A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4B7B902A7EFC570080C10A /* ProfileView.swift */; };
 		6E4B7B932A7EFCA70080C10A /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4B7B922A7EFCA70080C10A /* Groups.swift */; };
 		6E4B7B962A7F04070080C10A /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4B7B952A7F04070080C10A /* HealthKitManager.swift */; };
 		6E4F57C02A8FB38D00190879 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F57BF2A8FB38D00190879 /* StorageManager.swift */; };
 		6E53D8AE2A7B008D0002AD88 /* OnBoardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E53D8AD2A7B008D0002AD88 /* OnBoardingModel.swift */; };
 		6E53D8B12A7B01110002AD88 /* OnboardingVm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E53D8B02A7B01110002AD88 /* OnboardingVm.swift */; };
+		6E6BA3412A9AA24700763B7B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6BA3402A9AA24700763B7B /* LocationManager.swift */; };
+		6E6BA3442A9ABAB600763B7B /* LocationMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6BA3432A9ABAB600763B7B /* LocationMan.swift */; };
 		6E83472B2A96B9130034CA12 /* IndividualGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E83472A2A96B9130034CA12 /* IndividualGroupModel.swift */; };
-		6E8D5C852A83B94D007FD3AF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8D5C842A83B94D007FD3AF /* LoginViewModel.swift */; };
 		6E8D5C8E2A83D538007FD3AF /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8D5C8D2A83D538007FD3AF /* AuthenticationViewModel.swift */; };
 		6E8D5C902A841F0A007FD3AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E8D5C8F2A841F0A007FD3AF /* GoogleService-Info.plist */; };
 		6EA3F31A2A8E93230077A115 /* GroupType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA3F3192A8E93230077A115 /* GroupType.swift */; };
@@ -63,10 +64,10 @@
 		6E179AE72A8E877D00C18E89 /* GroupCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreationView.swift; sourceTree = "<group>"; };
 		6E27ECED2A98ABBD00A1030A /* JoinGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupView.swift; sourceTree = "<group>"; usesTabs = 1; };
 		6E27ECEF2A98ADE500A1030A /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
+		6E33412C2A9A8BB400C7A3C8 /* GroupMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberView.swift; sourceTree = "<group>"; };
 		6E4385602A8E241A00F1248B /* GroupsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewModel.swift; sourceTree = "<group>"; };
 		6E4385622A8E28B000F1248B /* IndividualGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualGroupView.swift; sourceTree = "<group>"; };
 		6E4B7B8B2A7E732F0080C10A /* SplashScreenNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenNavigation.swift; sourceTree = "<group>"; };
-		6E4B7B8E2A7EFBD80080C10A /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		6E4B7B902A7EFC570080C10A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		6E4B7B922A7EFCA70080C10A /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		6E4B7B942A7F028A0080C10A /* TrackMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TrackMe.entitlements; sourceTree = "<group>"; };
@@ -74,8 +75,10 @@
 		6E4F57BF2A8FB38D00190879 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		6E53D8AD2A7B008D0002AD88 /* OnBoardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingModel.swift; sourceTree = "<group>"; };
 		6E53D8B02A7B01110002AD88 /* OnboardingVm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVm.swift; sourceTree = "<group>"; };
+		6E6BA3402A9AA24700763B7B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		6E6BA3422A9AA2B300763B7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6E6BA3432A9ABAB600763B7B /* LocationMan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMan.swift; sourceTree = "<group>"; };
 		6E83472A2A96B9130034CA12 /* IndividualGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualGroupModel.swift; sourceTree = "<group>"; };
-		6E8D5C842A83B94D007FD3AF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		6E8D5C8D2A83D538007FD3AF /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		6E8D5C8F2A841F0A007FD3AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6EA3F3192A8E93230077A115 /* GroupType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupType.swift; sourceTree = "<group>"; };
@@ -129,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				6EBB6D412A8F6D180067473E /* PhotoPicker */,
+				6E33412C2A9A8BB400C7A3C8 /* GroupMemberView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -152,15 +156,15 @@
 			children = (
 				6E4B7B8B2A7E732F0080C10A /* SplashScreenNavigation.swift */,
 				6E53D8B02A7B01110002AD88 /* OnboardingVm.swift */,
-				6E4B7B8E2A7EFBD80080C10A /* NavigationBar.swift */,
 				6E4B7B952A7F04070080C10A /* HealthKitManager.swift */,
-				6E8D5C842A83B94D007FD3AF /* LoginViewModel.swift */,
 				6E8D5C8D2A83D538007FD3AF /* AuthenticationViewModel.swift */,
 				6EA5E1E12A8427EB006BB206 /* FirebaseUsersViewModel.swift */,
 				6E4385602A8E241A00F1248B /* GroupsViewModel.swift */,
 				6EBB6D3D2A8F66FD0067473E /* ImageUploadManager.swift */,
 				6E4F57BF2A8FB38D00190879 /* StorageManager.swift */,
 				6E27ECEF2A98ADE500A1030A /* Shapes.swift */,
+				6E6BA3402A9AA24700763B7B /* LocationManager.swift */,
+				6E6BA3432A9ABAB600763B7B /* LocationMan.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -195,6 +199,7 @@
 		6EEEAB262A75A33A00BE04CB /* TrackMe */ = {
 			isa = PBXGroup;
 			children = (
+				6E6BA3422A9AA2B300763B7B /* Info.plist */,
 				6E4B7B942A7F028A0080C10A /* TrackMe.entitlements */,
 				6E4B7B8D2A7EFBC30080C10A /* Components */,
 				6E53D8AF2A7B00FC0002AD88 /* ViewModels */,
@@ -336,12 +341,12 @@
 				6EBB6D3E2A8F66FD0067473E /* ImageUploadManager.swift in Sources */,
 				6EBB6D452A8F6D6E0067473E /* PhotoPicker.swift in Sources */,
 				6E8D5C8E2A83D538007FD3AF /* AuthenticationViewModel.swift in Sources */,
+				6E33412D2A9A8BB400C7A3C8 /* GroupMemberView.swift in Sources */,
 				6EEEAB2A2A75A33A00BE04CB /* ContentView.swift in Sources */,
 				6E53D8AE2A7B008D0002AD88 /* OnBoardingModel.swift in Sources */,
 				6E4B7B962A7F04070080C10A /* HealthKitManager.swift in Sources */,
 				6E4385612A8E241A00F1248B /* GroupsViewModel.swift in Sources */,
 				6EEEAB282A75A33A00BE04CB /* TrackMeApp.swift in Sources */,
-				6E8D5C852A83B94D007FD3AF /* LoginViewModel.swift in Sources */,
 				6EE706AC2A79C8D60071C06B /* Onboarding.swift in Sources */,
 				6EFAAE4F2A81A58000710295 /* StepsModel.swift in Sources */,
 				6E179AE82A8E877D00C18E89 /* GroupCreationView.swift in Sources */,
@@ -356,9 +361,10 @@
 				6E53D8B12A7B01110002AD88 /* OnboardingVm.swift in Sources */,
 				6E4385632A8E28B000F1248B /* IndividualGroupView.swift in Sources */,
 				6EA3F3202A8EC9370077A115 /* PickerModel.swift in Sources */,
-				6E4B7B8F2A7EFBD80080C10A /* NavigationBar.swift in Sources */,
 				6E4B7B932A7EFCA70080C10A /* Groups.swift in Sources */,
+				6E6BA3442A9ABAB600763B7B /* LocationMan.swift in Sources */,
 				6E4F57C02A8FB38D00190879 /* StorageManager.swift in Sources */,
+				6E6BA3412A9AA24700763B7B /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +497,7 @@
 				DEVELOPMENT_TEAM = VARVZQCW82;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TrackMe/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow us to track you health ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -523,6 +530,7 @@
 				DEVELOPMENT_TEAM = VARVZQCW82;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TrackMe/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow us to track you health ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

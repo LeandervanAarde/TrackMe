@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @StateObject var locationManager = LocationManager()
     @ObservedObject var userVm: UsersViewModel = UsersViewModel()
     var image: Image?
     @State private var model = PhotoPickerModel()
@@ -112,16 +113,18 @@ struct ProfileView: View {
                         
                         Spacer() //Spacer for buttons
                         
-                        VStack{
-                            Image(systemName: "plus.app")
-                                .resizable()
-                                .frame(maxWidth: 30, maxHeight: 30)
-                                .foregroundColor(Color.white)
-                            
-                            Text("Join Group")
-                                .foregroundColor(Color.white)
-                                .font(.caption2)
-                        } //End of VStack for Button 2
+                        NavigationLink(destination: JoinGroupView(), label: {
+                            VStack{
+                                Image(systemName: "plus.app")
+                                    .resizable()
+                                    .frame(maxWidth: 30, maxHeight: 30)
+                                    .foregroundColor(Color.white)
+                                
+                                Text("Join Group")
+                                    .foregroundColor(Color.white)
+                                    .font(.caption2)
+                            } //End of VStack for Button 2
+                        })
                     } //End of HStack containing Create and join
                     
                     Button(action: {}){
@@ -155,37 +158,3 @@ struct ProfileView: View {
         .preferredColorScheme(.light)
     }
 }
-
-
-
-//struct CornerRadiusShape: Shape {
-//    var radius = CGFloat.infinity
-//    var corners = UIRectCorner.allCorners
-//
-//    func path(in rect: CGRect) -> Path {
-//        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-//        return Path(path.cgPath)
-//    }
-//}
-//
-//struct CornerRadiusStyle: ViewModifier {
-//    var radius: CGFloat
-//    var corners: UIRectCorner
-//
-//    func body(content: Content) -> some View {
-//        content
-//            .clipShape(CornerRadiusShape(radius: radius, corners: corners))
-//    }
-//}
-//
-//extension View {
-//    func cornerRadius(radius: CGFloat, corners: UIRectCorner) -> some View {
-//        ModifiedContent(content: self, modifier: CornerRadiusStyle(radius: radius, corners: corners))
-//    }
-//}
-
-//struct ProfileView_Previews: PreviewProvider {
-//    static var previews: some View {
-////        ProfileView()
-//    }
-//}
