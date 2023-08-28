@@ -26,7 +26,7 @@ struct IndividualGroupView: View {
         VStack{
             if(shouldSHow){
                 Map(
-                    coordinateRegion: $locationManager.region,
+                    coordinateRegion: $mapRegion,
                     interactionModes: MapInteractionModes.all,
                     showsUserLocation: true,
                     userTrackingMode: $tracking
@@ -65,7 +65,11 @@ struct IndividualGroupView: View {
                 groupData = vm.individualGroup
                 members = vm.groupMembers
                 shouldSHow.toggle()
-                print(String(describing: shouldSHow))
+                if let userLocation = locationManager.location {
+                               // Update the mapRegion with the user's location
+                               mapRegion.center = userLocation
+                    print(mapRegion.center)
+                }
             }
         }
     }

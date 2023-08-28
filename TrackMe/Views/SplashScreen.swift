@@ -1,4 +1,5 @@
 import SwiftUI
+import MapKit
 
 struct SplashScreen: View {
     @State private var isRotating = -25.0
@@ -7,7 +8,10 @@ struct SplashScreen: View {
     var vm: NavigationNavigationVm = NavigationNavigationVm()
     @AppStorage("hasOpened") var hasOpened: Bool = false
     @State var isActive: Bool = false
-
+    @ObservedObject var userVm: UsersViewModel = UsersViewModel()
+    @StateObject var locationManager = LocationManager()
+    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+    
     var body: some View {
         ZStack {
             if isActive {
@@ -34,8 +38,8 @@ struct SplashScreen: View {
                             .onAppear {
                                 withAnimation(.linear(duration: 1).speed(0.4).repeatForever(autoreverses: true)) {
                                     isRotating = 25.0
-                                }
                             }
+                        }
                     }
                     Spacer()
                         .frame(height: 30)
@@ -69,6 +73,11 @@ struct SplashScreen: View {
                 withAnimation {
                     vm.navigateToNextScreen(hasOpened: hasOpened)
                     isActive = true
+                }
+                if let userLocation = locationManager.location {
+                    mapRegion.center = userLocation
+                    print(mapRegion.center)
+                    userVm.updateUserLocation(lat: String(describing: mapRegion.center.latitude), long: String(describing: mapRegion.center.longitude))
                 }
                 UserDefaults.standard.set(true, forKey: "hasOpened")
             }

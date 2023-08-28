@@ -8,6 +8,7 @@
 import SwiftUI
 import Charts
 import Combine
+import MapKit
 
 struct DashboardView: View {
     let passthroughSubject = PassthroughSubject<Bool, Never>()
@@ -50,7 +51,6 @@ struct DashboardView: View {
                             .foregroundColor(Color("Green"))
                     }
                     .padding(.vertical, 3)
-                    
                     VStack {
                     
                         Text("Connections made:")
@@ -77,29 +77,23 @@ struct DashboardView: View {
                             }
                         }
                         .frame(maxHeight: 150)
-                        
                     }
                     .padding(20)
-                    
                 }
                 .frame(maxWidth: .infinity, maxHeight: 900, alignment: .top)
                 .padding(20)
                 .background(Color.white)
-
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
 
             .background(Color("Green"))
             .onAppear{
                 stepsData = healthKitManager.weeklySteps
-          
             }
-            
         } else{
             Text("Loading...")
         }
     }
-
 }
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {

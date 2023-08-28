@@ -82,6 +82,20 @@ class UsersViewModel: ObservableObject{
             }
         }
     }
+    
+    func updateUserLocation(lat: String, long: String){
+        let userId = getUserId()
+        let ref = db.collection("users").document(userId)
+        
+        ref.updateData(["latitude": lat, "longitude": long]){error in
+            if let error = error{
+                print("error updating userLocation")
+            } else{
+                print("lat and long \(lat) \(long)")
+            }
+        }
+        
+    }
 
 }
 
