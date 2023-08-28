@@ -16,7 +16,7 @@ struct GroupType: Hashable{
 var groups: [GroupType] = [
     GroupType(type: "Festivals", image: "Festivals"),
     GroupType(type: "Parties", image: "Parties"),
-    GroupType(type: "Stores/Malls", image: "Stores"),
+    GroupType(type: "Stores/Malls", image: "Festivals"),
     GroupType(type: "Restaurants", image: "Restaurants"),
     GroupType(type: "Gyms and Excersize", image: "Excersize"),
     GroupType(type: "Education/Study Groups", image: "StudyGroup")

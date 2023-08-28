@@ -10,6 +10,8 @@ import SwiftUI
 struct GroupMemberView: View {
     @Binding var userName: String
     @Binding var profileImage: String
+    @Binding var latitude: String
+    @Binding var longitude: String
     var body: some View {
         VStack{
             HStack(alignment: .center) {
@@ -59,10 +61,10 @@ struct GroupMemberView: View {
                                 .font(.body)
                                 .fontWeight(.bold)
                             
-                            Text("1.000986890")
+                            Text(latitude)
                                 .fontWeight(.light)
                             
-                            Text("1.000986890")
+                            Text(longitude)
                                 .fontWeight(.light)
                         }
                             
@@ -83,6 +85,6 @@ struct GroupMemberView: View {
 
 struct GroupMemberView_Previews: PreviewProvider {
     static var previews: some View {
-        GroupMemberView(userName: .constant("Riaan van Aarde"), profileImage: .constant("Hey"))
+        GroupMemberView(userName: .constant("Riaan van Aarde"), profileImage: .constant("Hey"), latitude: .constant("1902"), longitude: .constant("192.000"))
     }
 }

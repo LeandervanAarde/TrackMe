@@ -15,7 +15,7 @@ struct Groups: View {
     var body: some View {
         @State var userGroups = GroupManager.userGroups
         NavigationView{
-            VStack(){
+            VStack{
             Text("My Groups")
                 .font(.title)
                 .frame(maxWidth: .infinity)
@@ -37,21 +37,45 @@ struct Groups: View {
                             ForEach(0..<2) { column in
                                 let index = row * 2 + column
                                 if index < userGroups.count {
+//                                    Button(action: {
+//                                        self.currentGroupID = userGroups[index].id
+//                                        self.navigateToIndividual = true
+//                                        print(self.currentGroupID)
+//                                    }) {
+//                                        NavigationLink {
+//                                            IndividualGroupView(groupId: $currentGroupID)
+//                                        } label: {
+//                                            VStack {
+//                                                Image(userGroups[index].GroupImage)
+//                                                    .resizable()
+//                                                    .scaledToFit()
+//                                                    Text(userGroups[index].GroupName)
+//                                                }
+//                                                .frame(maxWidth: .infinity)
+//                                        }
+//                                    }
+//                                    .buttonStyle(PlainButtonStyle())
+                                    
                                     Button(action: {
                                         self.currentGroupID = userGroups[index].id
                                         self.navigateToIndividual = true
-                                        print("Navigate")
+                                        print(String(describing: currentGroupID))
                                     }) {
-                                        VStack {
-                                            Image(userGroups[index].GroupImage)
-                                                .resizable()
-                                                .scaledToFit()
-                                            Text(userGroups[index].GroupName)
+                                        NavigationLink {
+                                            IndividualGroupView(groupId: $currentGroupID)
+                                        } label: {
+                                                                                     VStack {
+                                                                                        Image(userGroups[index].GroupImage)
+                                                                                           .resizable()
+                                                                                            .scaledToFit()
+                                                                                         Text(userGroups[index].GroupName)
+                                                                                }
+                                                                                       .frame(maxWidth: .infinity)
+                                            .frame(maxWidth: .infinity)
                                         }
-                                        .frame(maxWidth: .infinity)
                                     }
                                     .buttonStyle(PlainButtonStyle())
-                                    .background(NavigationLink("", destination: IndividualGroupView(groupId: $currentGroupID) , isActive: $navigateToIndividual))
+                                   
                                 }
                             }
                         }
@@ -70,6 +94,7 @@ struct Groups: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
                         userGroups = GroupManager.userGroups
                         print(GroupManager.userGroups)
+                        currentGroupID = userGroups[0].id
                     }
                 }
                 Spacer()

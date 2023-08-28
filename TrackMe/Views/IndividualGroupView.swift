@@ -48,7 +48,7 @@ struct IndividualGroupView: View {
                 
                 ScrollView{
                     ForEach($members, id: \.username) { member in
-                        GroupMemberView(userName: member.username, profileImage: member.profileImage)
+                        GroupMemberView(userName: member.username, profileImage: member.profileImage, latitude: member.latitude, longitude: member.longitude)
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
