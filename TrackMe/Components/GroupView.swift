@@ -8,24 +8,20 @@
 import SwiftUI
 
 struct GroupView: View {
+    @Binding var image: String
+    @Binding var name: String
+
     var body: some View {
         VStack{
             HStack{
-                Image("Festivals")
+                Image(image)
                     .resizable()
                     .frame(maxWidth: 100, maxHeight: 90)
                     .scaledToFit()
                 Spacer()
-                
-                Text("Group Name Here")
+                Text(name)
                 Spacer()
-                
-                VStack{
-                    Image(systemName: "person.fill")
-                    Text("3")
-                }
             }
-            Divider()
         }
         .padding(.horizontal,10)
     }
@@ -33,6 +29,6 @@ struct GroupView: View {
 
 struct GroupView_Previews: PreviewProvider {
     static var previews: some View {
-        GroupView()
+        GroupView(image: .constant("Festivals") , name: .constant("FestiNinja"))
     }
 }

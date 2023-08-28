@@ -26,7 +26,6 @@ class GroupsViewModel: ObservableObject{
                     _ = document.data()
                     if let group = try? document.data(as: GroupsModel.self) {
                         self.userGroups.append(group)
-                        
                     }
                 }
             }
@@ -136,6 +135,19 @@ class GroupsViewModel: ObservableObject{
                     
                     
                 }
+            }
+        }
+    }
+    
+    func leaveGroup(groupId: String){
+        let userID = Auth.auth().currentUser?.uid
+        let groupsRef = db.collection("groups").document(groupId)
+        
+        groupsRef.updateData(["GroupMembers": FieldValue.arrayRemove([userID as Any])]){error in
+            if let error = error {
+                print("Error upating \(error.localizedDescription)")
+            } else {
+                print("updated doc")
             }
         }
     }

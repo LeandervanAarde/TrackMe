@@ -23,7 +23,6 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         manager.startUpdatingLocation()
     }
   
-    
     func requestLocation(){
         manager.requestWhenInUseAuthorization()
     }
@@ -37,5 +36,3 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             )
         }
     }}
-
-

@@ -14,13 +14,13 @@ struct Groups: View {
     @State var currentGroupID: String?
     var body: some View {
         @State var userGroups = GroupManager.userGroups
-        NavigationView{
-            VStack{
-            Text("My Groups")
-                .font(.title)
-                .frame(maxWidth: .infinity)
+        NavigationView {
+            VStack {
+                Text("My Groups")
+                    .font(.title)
+                    .frame(maxWidth: .infinity)
                 
-                Button(action: {}){
+                Button(action: {}) {
                     Text("Create new Group")
                         .padding(.vertical, 7)
                         .padding(.horizontal, 10)
@@ -29,85 +29,52 @@ struct Groups: View {
                         .cornerRadius(8)
                         .frame(maxHeight: 50)
                 } // end of button
-                Spacer()
-                    .frame(maxHeight: 10)
-                VStack(alignment: .leading, spacing: 10)  {
-                    ForEach(0..<userGroups.count, id: \.self) { row in
-                        HStack {
-                            ForEach(0..<2) { column in
-                                let index = row * 2 + column
-                                if index < userGroups.count {
-//                                    Button(action: {
-//                                        self.currentGroupID = userGroups[index].id
-//                                        self.navigateToIndividual = true
-//                                        print(self.currentGroupID)
-//                                    }) {
-//                                        NavigationLink {
-//                                            IndividualGroupView(groupId: $currentGroupID)
-//                                        } label: {
-//                                            VStack {
-//                                                Image(userGroups[index].GroupImage)
-//                                                    .resizable()
-//                                                    .scaledToFit()
-//                                                    Text(userGroups[index].GroupName)
-//                                                }
-//                                                .frame(maxWidth: .infinity)
-//                                        }
-//                                    }
-//                                    .buttonStyle(PlainButtonStyle())
-                                    
-                                    Button(action: {
-                                        self.currentGroupID = userGroups[index].id
-                                        self.navigateToIndividual = true
-                                        print(String(describing: currentGroupID))
-                                    }) {
-                                        NavigationLink {
-                                            IndividualGroupView(groupId: $currentGroupID)
-                                        } label: {
-                                                                                     VStack {
-                                                                                        Image(userGroups[index].GroupImage)
-                                                                                           .resizable()
-                                                                                            .scaledToFit()
-                                                                                         Text(userGroups[index].GroupName)
-                                                                                }
-                                                                                       .frame(maxWidth: .infinity)
-                                            .frame(maxWidth: .infinity)
-                                        }
-                                    }
-                                    .buttonStyle(PlainButtonStyle())
-                                   
-                                }
+                Spacer().frame(maxHeight: 10)
+                
+                List {
+                    ForEach($userGroups) { document in
+                        NavigationLink(
+                            destination: IndividualGroupView(groupId: document.id),
+                            label: {
+                            GroupView(
+                                image: document.GroupImage,
+                                name: document.GroupName
+                                )
+                            }
+                        )
+                    }
+                    .onDelete { indices in
+                        for index in indices {
+                            let group = userGroups[index]
+                            if let docID = group.id {
+                                GroupManager.leaveGroup(groupId: group.id!)
                             }
                         }
                     }
-                } // end of VStack
-                .onAppear{
-                    GroupManager.getAllUserGroups { documents, error in
-                            if let error = error {
-                                print(error)
-                            } else if let documents = documents {
-                                GroupManager.userGroups = documents.compactMap { document in
-                                try? document.data(as: GroupsModel.self)
-                                    }
-                            }
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-                        userGroups = GroupManager.userGroups
-                        print(GroupManager.userGroups)
-                        currentGroupID = userGroups[0].id
+                }
+                .padding(0)
+                .listStyle(PlainListStyle()) // Added list style
+            }
+            .padding(0)
+            .background(Color.white) // Apply white background to the VStack
+            .onAppear {
+                GroupManager.getAllUserGroups { documents, error in
+                    if let error = error {
+                        print(error)
+                    } else if let documents = documents {
+                        GroupManager.userGroups = documents.compactMap { document in
+                            try? document.data(as: GroupsModel.self)
+                        }
                     }
                 }
-                Spacer()
-            } // End of VStack
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(.horizontal, 20)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    userGroups = GroupManager.userGroups
+                    print(GroupManager.userGroups)
+                    currentGroupID = userGroups[0].id
+                }
+            }
+            Spacer()
         }
-        }
-    
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
-//
-//struct Groups_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Groups()
-//    }
-//}
+}
