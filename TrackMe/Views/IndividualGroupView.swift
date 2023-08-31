@@ -20,39 +20,44 @@ struct IndividualGroupView: View {
    
     
     var body: some View {
-        VStack{
-            if(shouldSHow){
-                Map(
-                    coordinateRegion: $mapRegion,
-                    interactionModes: MapInteractionModes.all,
-                    showsUserLocation: true,
-                    userTrackingMode: $tracking,
-                    annotationItems: members,
-                    annotationContent: { member in
-                        MapMarker(coordinate: CLLocationCoordinate2D(latitude: Double(member.latitude) ?? 0.0, longitude: Double(member.longitude) ?? 0.0), tint: .red)
+        NavigationView{
+            VStack{
+                if(shouldSHow){
+                    Map(
+                        coordinateRegion: $mapRegion,
+                        interactionModes: MapInteractionModes.all,
+                        showsUserLocation: true,
+                        userTrackingMode: $tracking,
+                        annotationItems: members,
+                        annotationContent: { member in
+                            MapMarker(coordinate: CLLocationCoordinate2D(latitude: Double(member.latitude) ?? 0.0, longitude: Double(member.longitude) ?? 0.0), tint: .red)
+                        }
+                    )
+                    ScrollView{
+                        ForEach($members, id: \.username) { member in
+                            NavigationLink(destination: FindMyFriend(userImage: member.profileImage, userName: member.username, userLat: member.latitude, userLong: member.longitude)){
+                                
+                                GroupMemberView(userName: member.username, profileImage: member.profileImage, latitude: member.latitude, longitude: member.longitude)
+                            }
+                        }
                     }
-                )
-                ScrollView{
-                    ForEach($members, id: \.username) { member in
-                        GroupMemberView(userName: member.username, profileImage: member.profileImage, latitude: member.latitude, longitude: member.longitude)
-                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else{
+                    ProgressView()
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else{
-                ProgressView()
             }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .onAppear{
-            print(String(describing: locationManager.region.span))
-            vm.getIndividualGroup(id: groupId! )
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-                groupData = vm.individualGroup
-                members = vm.groupMembers
-                shouldSHow.toggle()
-                if let userLocation = locationManager.location {
-                    mapRegion.center = userLocation
-                    print(mapRegion.center)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .onAppear{
+                print(String(describing: locationManager.region.span))
+                vm.getIndividualGroup(id: groupId! )
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+                    groupData = vm.individualGroup
+                    members = vm.groupMembers
+                    shouldSHow.toggle()
+                    if let userLocation = locationManager.location {
+                        mapRegion.center = userLocation
+                        print(mapRegion.center)
+                    }
                 }
             }
         }

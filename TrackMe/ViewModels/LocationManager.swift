@@ -13,6 +13,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     let manager = CLLocationManager()
     @Published var location: CLLocationCoordinate2D?
     @Published var region = MKCoordinateRegion()
+    @Published var locationName: String?
     
     
     override init(){
@@ -34,5 +35,17 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
                 center: lastLocation.coordinate,
                 span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
             )
+            let geocoder = CLGeocoder()
+                   let location = CLLocation(latitude: lastLocation.coordinate.latitude, longitude: lastLocation.coordinate.longitude)
+                   
+                   geocoder.reverseGeocodeLocation(location) { placemarks, error in
+                       if let error = error {
+                           print("Error: \(error.localizedDescription)")
+                       } else if let placemark = placemarks?.first {
+                           let loc = placemark.name ?? "Unknown Area"
+                           self.locationName = loc
+               }
+            }
         }
-    }}
+    }
+}

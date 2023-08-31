@@ -47,6 +47,7 @@
 		6EBB6D432A8F6D380067473E /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBB6D422A8F6D380067473E /* ImageView.swift */; };
 		6EBB6D452A8F6D6E0067473E /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBB6D442A8F6D6E0067473E /* PhotoPicker.swift */; };
 		6EBB6D472A8F6DB80067473E /* PhotoSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBB6D462A8F6DB80067473E /* PhotoSelectionView.swift */; };
+		6ED48E762AA1316F005FE545 /* FindMyFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED48E752AA1316F005FE545 /* FindMyFriend.swift */; };
 		6EE706AA2A79ADEE0071C06B /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE706A92A79ADEE0071C06B /* DashboardView.swift */; };
 		6EE706AC2A79C8D60071C06B /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE706AB2A79C8D60071C06B /* Onboarding.swift */; };
 		6EEEAB282A75A33A00BE04CB /* TrackMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEEAB272A75A33A00BE04CB /* TrackMeApp.swift */; };
@@ -91,6 +92,7 @@
 		6EBB6D422A8F6D380067473E /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		6EBB6D442A8F6D6E0067473E /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		6EBB6D462A8F6DB80067473E /* PhotoSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectionView.swift; sourceTree = "<group>"; };
+		6ED48E752AA1316F005FE545 /* FindMyFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyFriend.swift; sourceTree = "<group>"; };
 		6EE706A92A79ADEE0071C06B /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		6EE706AB2A79C8D60071C06B /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		6EEEAB242A75A33A00BE04CB /* TrackMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,6 +238,7 @@
 				6E4385622A8E28B000F1248B /* IndividualGroupView.swift */,
 				6E179AE72A8E877D00C18E89 /* GroupCreationView.swift */,
 				6E27ECED2A98ABBD00A1030A /* JoinGroupView.swift */,
+				6ED48E752AA1316F005FE545 /* FindMyFriend.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				6EA5E1E22A8427EB006BB206 /* FirebaseUsersViewModel.swift in Sources */,
 				6EA5E1E82A845029006BB206 /* SelectGroupTypeView.swift in Sources */,
 				6EA3F31A2A8E93230077A115 /* GroupType.swift in Sources */,
+				6ED48E762AA1316F005FE545 /* FindMyFriend.swift in Sources */,
 				6EBB6D472A8F6DB80067473E /* PhotoSelectionView.swift in Sources */,
 				6E53D8B12A7B01110002AD88 /* OnboardingVm.swift in Sources */,
 				6E4385632A8E28B000F1248B /* IndividualGroupView.swift in Sources */,

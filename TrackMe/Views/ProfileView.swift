@@ -126,17 +126,7 @@ struct ProfileView: View {
                             } //End of VStack for Button 2
                         })
                     } //End of HStack containing Create and join
-                    
-                    Button(action: {}){
-                        Text("View my Groups")
-                            .padding(.vertical, 7)
-                            .padding(.horizontal, 10)
-                            .background(Color.white)
-                            .foregroundColor(Color("Green"))
-                            .cornerRadius(8)
-                            .frame(maxHeight: 20)
-                    } //End of button
-                    
+                                        
                 }
                 .frame(maxWidth: .infinity, maxHeight: 140, alignment: .top)
                 .padding(10)
