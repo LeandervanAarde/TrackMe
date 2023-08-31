@@ -46,6 +46,8 @@ class UsersViewModel: ObservableObject{
             }
 
             if let document = document, document.exists {
+                
+                
                 if let userData = try? document.data(as: personModel.self) {
                     self.userDetails = userData
                 } else {
@@ -88,7 +90,7 @@ class UsersViewModel: ObservableObject{
         let ref = db.collection("users").document(userId)
         
         ref.updateData(["latitude": lat, "longitude": long]){error in
-            if let error = error{
+            if error != nil{
                 print("error updating userLocation")
             } else{
                 print("lat and long \(lat) \(long)")
