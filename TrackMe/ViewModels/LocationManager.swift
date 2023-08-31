@@ -35,17 +35,35 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
                 center: lastLocation.coordinate,
                 span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
             )
-            let geocoder = CLGeocoder()
-                   let location = CLLocation(latitude: lastLocation.coordinate.latitude, longitude: lastLocation.coordinate.longitude)
-                   
-                   geocoder.reverseGeocodeLocation(location) { placemarks, error in
-                       if let error = error {
-                           print("Error: \(error.localizedDescription)")
-                       } else if let placemark = placemarks?.first {
-                           let loc = placemark.name ?? "Unknown Area"
-                           self.locationName = loc
-               }
+//            let geocoder = CLGeocoder()
+//                   let location = CLLocation(latitude: lastLocation.coordinate.latitude, longitude: lastLocation.coordinate.longitude)
+//                   
+//                   geocoder.reverseGeocodeLocation(location) { placemarks, error in
+//                       if let error = error {
+//                           print("Error: \(error.localizedDescription)")
+//                       } else if let placemark = placemarks?.first {
+//                           let loc = placemark.name ?? "Unknown Area"
+//                           self.locationName = loc
+//               }
+//            }
+        }
+    }
+    
+    
+    func reverseGeocodeLocation(_ location: CLLocation, completion: (String) -> Void) async {
+        let geocoder = CLGeocoder()
+        
+        do {
+            let placemarks = try await geocoder.reverseGeocodeLocation(location)
+            if let placemark = placemarks.first {
+                let locationName = placemark.name ?? "Unknown Area"
+                completion(locationName)
+            } else {
+                completion("Unknown Area")
             }
+        } catch {
+            print("Error: \(error.localizedDescription)")
+            completion("Unknown Area")
         }
     }
 }

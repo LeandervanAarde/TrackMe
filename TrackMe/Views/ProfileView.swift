@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct ProfileView: View {
     @StateObject var locationManager = LocationManager()
@@ -15,6 +16,7 @@ struct ProfileView: View {
     @State private var model = PhotoPickerModel()
     @State private var selectedImageURL: URL?
     @State private var groupCount: Int = 0;
+    @State private var locationName: String = ""
   
     
     var body: some View {
@@ -39,9 +41,18 @@ struct ProfileView: View {
                             Image(systemName: "mappin")
                                 .foregroundColor(.red)
                                 
-                            Text(userVm.userDetails?.fromWhere ?? "Roodepoort")
+                            Text(locationName)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(Color("Green"))
+                                .task {
+                                    if let lastLocation = locationManager.location {
+                                        let location = CLLocation(latitude: lastLocation.latitude, longitude: lastLocation.longitude)
+                                        await locationManager.reverseGeocodeLocation(location) { name in
+                                            self.locationName = name
+                                        }
+                                    }
+                                }
+          
                         } // End of pindrop HStack
                     }
                 } // End of profile HStack
