@@ -5,13 +5,17 @@
 //  Created by Leander Van Aarde on 31/08/2023.
 //
 import SwiftUI
+import CoreLocation
+import CoreMotion
 
 struct FindMyFriend: View {
+    @ObservedObject var locationManager: LocationManager = LocationManager()
+    @ObservedObject var motionManager: MotionManager = MotionManager()
     @Binding var userImage: String
     @Binding var userName: String
     @Binding var userLat: String
     @Binding var userLong: String
-
+    
     var body: some View {
         VStack {
             Spacer()
@@ -32,7 +36,7 @@ struct FindMyFriend: View {
                             .scaledToFill()
                             .foregroundColor(.gray)
                             .frame(maxHeight: 60)
-                            .clipShape(Circle()) 
+                            .clipShape(Circle())
                     case .empty:
                         ProgressView()
                             .frame(maxHeight: 70)
@@ -54,6 +58,8 @@ struct FindMyFriend: View {
                 .resizable()
                 .foregroundColor(.white)
                 .frame(width: 110, height: 110)
+                .rotationEffect(.degrees(calculateDirection()))
+                .animation(Animation.easeInOut(duration: 0.1), value: 1)
 
             Spacer()
 
@@ -77,11 +83,49 @@ struct FindMyFriend: View {
                 Gradient.Stop(color: Color("Green"), location: 0.2),
                 Gradient.Stop(color: Color("LoginTriangleGreen"), location: 0.79),
             ]), startPoint: .bottomTrailing, endPoint: .topLeading))
+
+        }
+    private func calculateDirection() -> Double {
+        guard let userLocation = locationManager.location else {
+            return 0.0
+        }
+
+        let userHeading = motionManager.deviceOrientation // in radians
+        let userLoc = CLLocationCoordinate2D(latitude: Double(userLat) ?? 0.0, longitude: Double(userLong) ?? 0.0)
+        let targetHeading = userLocation.direction(to: userLoc)
+        
+        // Convert radians to degrees and adjust for the rotation direction
+        let degrees = userHeading.radiansToDegrees + targetHeading.radiansToDegrees
+        return degrees
     }
 }
+
+extension Double {
+    var radiansToDegrees: Double { self * 180 / .pi }
+    var degreesToRadians: Double { self * .pi / 180 }
+}
+
+extension CLLocationCoordinate2D {
+    func direction(to coordinate: CLLocationCoordinate2D) -> Double {
+        let dx = coordinate.longitude - longitude
+        let dy = coordinate.latitude - latitude
+        let angle = atan2(dy, dx) // in radians
+        return angle
+    }
+}
+
+
+
+
+
+
+
+
 
 struct FindMyFriend_Previews: PreviewProvider {
     static var previews: some View {
         FindMyFriend(userImage: .constant("https://firebasestorage.googleapis.com:443/v0/b/trackme-7f739.appspot.com/o/profileImages%2Fimage_1693086953.519913.jpg?alt=media&token=4b511d29-c098-4d76-88cd-0dbb4261a580"), userName: .constant("Julia"), userLat: .constant("-26.000530743054476"), userLong: .constant("28.006480392094705"))
     }
 }
+//
+//
