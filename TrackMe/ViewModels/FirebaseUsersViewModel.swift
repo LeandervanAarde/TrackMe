@@ -85,6 +85,20 @@ class UsersViewModel: ObservableObject{
         }
     }
     
+    func foundUserFriend(){
+        let userId = Auth.auth().currentUser?.uid ?? ""
+        
+        let userRef = db.collection("users").document(userId)
+        
+        userRef.updateData(["foundFriends" : FieldValue.increment(Int64(1))]){error in
+            if let error = error{
+                print("Error in updating document")
+            } else{
+                print("Document updated")
+            }
+        }
+    }
+    
     func updateUserLocation(lat: String, long: String){
         let userId = getUserId()
         let ref = db.collection("users").document(userId)

@@ -14,49 +14,37 @@ struct ImageView: View {
             if let avatarImage = image {
                 avatarImage
                     .resizable()
-                    .scaledToFit()
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.gray)
-                    .frame(maxHeight: UIScreen.main.bounds.height / 8)
+                    .aspectRatio(contentMode: .fill) // Use fill content mode
+                    .frame(maxHeight: 60)
                     .clipShape(Circle())
-                    .padding()
             } else {
                 if let profileImageURL = URL(string: userVm.userDetails?.profileImage ?? "") {
- 
                     AsyncImage(url: profileImageURL) { phase in
                         switch phase {
                             case .success(let image):
                                 image
                                     .resizable()
-                                    .scaledToFill()
-                                    .aspectRatio(contentMode: .fit)
-                                    .foregroundColor(.gray)
-                                    .padding()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 100, height: 100)
                                     .clipShape(Circle())
                             case .failure(_):
-                    
                                 Image(systemName: "person.fill")
                                     .resizable()
-                                    .scaledToFill()
-                                    .foregroundColor(.gray)
-                                    .frame(maxHeight: UIScreen.main.bounds.height / 8)
-                                    .padding()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 100, height: 100)
                                     .clipShape(Circle())
-                        case .empty:
-      
-                            ProgressView()
-                                .frame(maxHeight: UIScreen.main.bounds.height / 8)
-                                .padding()
+                            case .empty:
+                                ProgressView()
+                                    .frame(width: 100, height: 100)
+                        @unknown default:
+                            fatalError()
                         }
                     }
                 } else {
-              
                     Image(systemName: "person.fill")
                         .resizable()
-                        .scaledToFit()
-                        .foregroundColor(.gray)
-                        .frame(maxHeight: UIScreen.main.bounds.height / 8)
-                        .padding()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100)
                         .clipShape(Circle())
                 }
             }
@@ -69,6 +57,7 @@ struct ImageView: View {
         )
     }
 }
+
 
 struct ImageView_Previews: PreviewProvider {
     static var previews: some View {

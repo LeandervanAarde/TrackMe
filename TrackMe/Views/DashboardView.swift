@@ -52,19 +52,39 @@ struct DashboardView: View {
                     }
                     .padding(.vertical, 3)
                     VStack {
-                    
-                        Text("Connections made:")
-                        Spacer()
-                            .frame(height: 20)
-                        Chart {
-                            ForEach(stepsData, id: \.day) { item in
-                                LineMark(
-                                    x: .value("day", item.day),
-                                    y: .value("steps", item.steps)
-                                )
+                        
+                        VStack{
+                            Text("Distance walked today:")
+                                .font(.subheadline)
+                                .foregroundColor(Color("Green"))
+                            
+                            Spacer()
+                                .frame(height: 10)
+                            HStack {
+                                VStack {
+                                    
+                                    if let lastSteps = stepsData.last?.steps {
+                                        let distanceInKm = Double(lastSteps) / 1000.0
+                                        Text("\(String(format: "%.2f", distanceInKm))")
+                                            .font(.title2)
+                                    } else{
+                                        Text("No Data available")
+                                            .font(.title2)
+                                    }
+                                    
+                                    Divider()
+                                        .frame(minHeight: 1)
+                                        .background(Color("Green"))
+                                        .padding(.horizontal)
+                                }
+                                
+                                Text("Kilometeres")
+                                    .font(.title2)
                             }
                         }
-                        .frame(maxHeight: 150)
+                
+                        Spacer()
+                            .frame(height: 20)
                         Spacer()
                         Text("Distance walked:")
                             .padding(.bottom, 5)
@@ -76,7 +96,7 @@ struct DashboardView: View {
                                 )
                             }
                         }
-                        .frame(maxHeight: 150)
+                        .frame(maxHeight: 250)
                     }
                     .padding(20)
                 }

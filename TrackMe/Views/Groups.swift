@@ -20,7 +20,7 @@ struct Groups: View {
                     .font(.title)
                     .frame(maxWidth: .infinity)
                 
-                Button(action: {}) {
+                NavigationLink(destination: SelectGroupTypeView(), label:{
                     Text("Create new Group")
                         .padding(.vertical, 7)
                         .padding(.horizontal, 10)
@@ -28,7 +28,8 @@ struct Groups: View {
                         .foregroundColor(Color.white)
                         .cornerRadius(8)
                         .frame(maxHeight: 50)
-                } // end of button
+                })
+                
                 Spacer().frame(maxHeight: 10)
                 
                 List {

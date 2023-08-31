@@ -11,6 +11,7 @@ import CoreMotion
 struct FindMyFriend: View {
     @ObservedObject var locationManager: LocationManager = LocationManager()
     @ObservedObject var motionManager: MotionManager = MotionManager()
+    @StateObject var userVm: UsersViewModel = UsersViewModel()
     @Binding var userImage: String
     @Binding var userName: String
     @Binding var userLat: String
@@ -63,7 +64,7 @@ struct FindMyFriend: View {
 
             Spacer()
 
-            Button(action: {}){
+            Button(action: userVm.foundUserFriend){
                 Text("Found \(userName) ⭐️")
                     .font(.title2)
                     .padding(.vertical, 7)

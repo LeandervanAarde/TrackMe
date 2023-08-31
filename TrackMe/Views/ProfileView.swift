@@ -10,10 +10,11 @@ import SwiftUI
 struct ProfileView: View {
     @StateObject var locationManager = LocationManager()
     @ObservedObject var userVm: UsersViewModel = UsersViewModel()
+    @ObservedObject var groupsVm: GroupsViewModel = GroupsViewModel()
     var image: Image?
     @State private var model = PhotoPickerModel()
     @State private var selectedImageURL: URL?
-    
+    @State private var groupCount: Int = 0;
   
     
     var body: some View {
@@ -48,7 +49,7 @@ struct ProfileView: View {
                 HStack(spacing: 13) {
                     Spacer()
                     
-                    Text("2 \n Groups")
+                    Text("\(groupCount) \n Groups")
                         .font(.headline)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
@@ -62,18 +63,6 @@ struct ProfileView: View {
                         .padding(.vertical, 20) // Add space between text and divider
                     
                     Text("\(userVm.userDetails?.foundFriends ?? 1) \n Found")
-                        .font(.headline)
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.center)
-                        .frame(maxWidth: 70)
-                        .foregroundColor(Color("Green"))
-                    
-                    Divider()
-                        .frame(maxWidth: 1, maxHeight: 80)
-                        .overlay(Color("Green"))
-                        .padding(.vertical, 20) // Add space between text and divider
-                    
-                    Text("\(userVm.userDetails?.Friends ?? 1) \nFriends")
                         .font(.headline)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
@@ -126,7 +115,6 @@ struct ProfileView: View {
                             } //End of VStack for Button 2
                         })
                     } //End of HStack containing Create and join
-                                        
                 }
                 .frame(maxWidth: .infinity, maxHeight: 140, alignment: .top)
                 .padding(10)
@@ -136,6 +124,15 @@ struct ProfileView: View {
                 //End of Green Rounded corners VStack
             }
             .preferredColorScheme(.light)
+            .onAppear{
+                groupsVm.getAllUserGroups { documents, error in
+                    if let error = error {
+                        print(error)
+                    } else if let documents = documents {
+                        groupCount = documents.count
+                        }
+                    }
+                }
         }
         .onChange(of: selectedImageURL) { newValue in
             Task {
