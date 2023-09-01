@@ -11,7 +11,6 @@ import FirebaseFirestore
 import SwiftUI
 
 class GroupsViewModel: ObservableObject{
-
     private var db = Firestore.firestore()
     @Published var userGroups: [GroupsModel] = []
     @Published var individualGroup: GroupsModel?
@@ -83,10 +82,7 @@ class GroupsViewModel: ObservableObject{
             }
             if let document = document, document.exists{
                 
-                
-                
                 if let groupData = document.data(){
-                    
                     let name = groupData["GroupName"] as? String
                     let members = groupData["GroupMembers"] as? [String]
                     let image = groupData["GroupImage"] as? String
