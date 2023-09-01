@@ -194,8 +194,6 @@ class GroupsViewModel: ObservableObject{
         if let encoded = try? JSONEncoder().encode(userGroups){
             //Store the data to the app group
             UserDefaults(suiteName: "group.LeandervanAarde.TrackMe")!.set(encoded, forKey: "groups")
-            print("USERGROUPS: \(userGroups.count)")
-            print("COUNT: \(encoded.count)")
         }
         // optional: Call a refresh to reload our widget.
         WidgetCenter.shared.reloadAllTimelines()
