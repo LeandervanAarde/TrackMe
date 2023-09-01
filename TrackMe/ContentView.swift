@@ -34,9 +34,11 @@ struct ContentView: View {
                 Label("Profile", systemImage: "person")
             }
         }
+        .navigationBarBackButtonHidden(true)
         .accentColor(Color("Green"))
         .preferredColorScheme(.light)
     }
+    
 }
 
 private let itemFormatter: DateFormatter = {
