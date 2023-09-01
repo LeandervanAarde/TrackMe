@@ -47,9 +47,17 @@ class UsersViewModel: ObservableObject{
 
             if let document = document, document.exists {
                 
-                
-                if let userData = try? document.data(as: personModel.self) {
-                    self.userDetails = userData
+                if document.data() != nil {
+                    
+                    let friends  = document["Friends"] as? Int
+                    let foundFriends = document["foundFriends"] as? Int
+                    let fromWhere = document["FromWhere"] as? String
+                    let latitude = document["latitude"] as? String
+                    let longitude = document["longitude"] as? String
+                    let profileImage = document["profileImage"] as? String
+                    let username = document["username"] as? String
+                    
+                    self.userDetails = personModel(username: username ?? "", latitude: latitude ?? "", longitude: longitude ?? "", foundFriends: foundFriends ?? 0, profileImage: profileImage ?? "", fromWhere: fromWhere ?? "", Friends: friends ?? 0)
                 } else {
                     print("Problem with decoding document \(userId)")
                 }
@@ -91,7 +99,7 @@ class UsersViewModel: ObservableObject{
         let userRef = db.collection("users").document(userId)
         
         userRef.updateData(["foundFriends" : FieldValue.increment(Int64(1))]){error in
-            if let error = error{
+            if error != nil{
                 print("Error in updating document")
             } else{
                 print("Document updated")

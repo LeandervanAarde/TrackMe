@@ -23,9 +23,15 @@ class GroupsViewModel: ObservableObject{
                 print(error)
             } else if let documents = documents {
                 for document in documents {
-                    _ = document.data()
-                    if let group = try? document.data(as: GroupsModel.self) {
-                        self.userGroups.append(group)
+                    if let doc = document.data(){
+                        if document.data() != nil  {
+                            let name = doc["GroupName"] as? String
+                            let members = doc["GroupMembers"] as? [String]
+                            let image = doc["GroupImage"] as? String
+                            let code = doc["GroupCode"] as? String
+                            
+                            self.userGroups.append(GroupsModel(GroupName: name ?? "", GroupMembers: members ?? [""] , GroupImage: image ?? "", GroupCode: code ?? ""))
+                        }
                     }
                 }
             }
@@ -76,9 +82,18 @@ class GroupsViewModel: ObservableObject{
                 return
             }
             if let document = document, document.exists{
-                if let groupData = try? document.data(as: GroupsModel.self){
-                    self.individualGroup = groupData
-                    if let groupMembers = groupData.GroupMembers{
+                
+                
+                
+                if let groupData = document.data(){
+                    
+                    let name = groupData["GroupName"] as? String
+                    let members = groupData["GroupMembers"] as? [String]
+                    let image = groupData["GroupImage"] as? String
+                    let code = groupData["GroupCode"] as? String
+                    
+                    self.individualGroup = GroupsModel(GroupName: name ?? "", GroupMembers: members ?? [""] , GroupImage: image ?? "", GroupCode: code ?? "")
+                    if let groupMembers = members{
                         for member in groupMembers {
                             getUserDetails(userId: member)
                         }
@@ -92,22 +107,33 @@ class GroupsViewModel: ObservableObject{
     }
     
     private func getUserDetails(userId: String) {
-        db.collection("users").document(userId).getDocument { [weak self] document, error in
-            guard let self = self else { return }
-
+        db.collection("users").document(userId).getDocument { document, error in
             if let error = error {
                 print("Error fetching user details:", error.localizedDescription)
                 return
             }
+            
             if let document = document, document.exists {
-                if let userData = try? document.data(as: personModel.self) {
-                    self.groupMembers.append(userData)
+                if document.data() != nil {
+                    DispatchQueue.main.async { [weak self] in
+                        let friends  = document["Friends"] as? Int
+                        let foundFriends = document["foundFriends"] as? Int
+                        let fromWhere = document["FromWhere"] as? String
+                        let latitude = document["latitude"] as? String
+                        let longitude = document["longitude"] as? String
+                        let profileImage = document["profileImage"] as? String
+                        let username = document["username"] as? String
+                        
+                        
+                        self?.groupMembers.append(personModel(username: username ?? "", latitude: latitude ?? "", longitude: longitude ?? "", foundFriends: foundFriends ?? 0, profileImage: profileImage ?? "", fromWhere: fromWhere ?? "", Friends: friends ?? 0))
+                    }
                 } else {
                     print("Problem with decoding document \(userId)")
                 }
             }
         }
     }
+
     
     public func joinNewGroup(code: String){
         let userID = Auth.auth().currentUser?.uid
