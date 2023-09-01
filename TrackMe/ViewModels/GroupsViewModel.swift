@@ -158,8 +158,6 @@ class GroupsViewModel: ObservableObject{
                     print("Error upating \(error.localizedDescription)")
                 } else {
                     print("updated doc")
-                    
-                    
                 }
             }
         }
