@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E0D4D7F2AA1E49100396824 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0D4D7E2AA1E49000396824 /* WidgetKit.framework */; };
+		6E0D4D812AA1E49100396824 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0D4D802AA1E49100396824 /* SwiftUI.framework */; };
+		6E0D4D842AA1E49100396824 /* GroupsWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0D4D832AA1E49100396824 /* GroupsWidgetBundle.swift */; };
+		6E0D4D862AA1E49100396824 /* GroupsWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0D4D852AA1E49100396824 /* GroupsWidgetLiveActivity.swift */; };
+		6E0D4D882AA1E49100396824 /* GroupsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0D4D872AA1E49100396824 /* GroupsWidget.swift */; };
+		6E0D4D8B2AA1E49100396824 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E0D4D8A2AA1E49100396824 /* Assets.xcassets */; };
+		6E0D4D8D2AA1E49100396824 /* GroupsWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 6E0D4D892AA1E49100396824 /* GroupsWidget.intentdefinition */; };
+		6E0D4D8E2AA1E49100396824 /* GroupsWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 6E0D4D892AA1E49100396824 /* GroupsWidget.intentdefinition */; };
+		6E0D4D912AA1E49100396824 /* GroupsWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6E0D4D7C2AA1E49000396824 /* GroupsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6E0D4D962AA1E84000396824 /* GroupsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5E1E32A844CB7006BB206 /* GroupsModel.swift */; };
+		6E0D4D972AA1EA1900396824 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E8D5C8F2A841F0A007FD3AF /* GoogleService-Info.plist */; };
+		6E0D4D992AA2028E00396824 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EEEAB2B2A75A33B00BE04CB /* Assets.xcassets */; };
 		6E1190BA2A7BE44E009FF504 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 6E1190B92A7BE44E009FF504 /* FirebaseAppCheck */; };
 		6E1190BC2A7BE44E009FF504 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6E1190BB2A7BE44E009FF504 /* FirebaseAuth */; };
 		6E1190BE2A7BE44E009FF504 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 6E1190BD2A7BE44E009FF504 /* FirebaseAuthCombine-Community */; };
@@ -62,7 +74,41 @@
 		6EFAAE4F2A81A58000710295 /* StepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFAAE4E2A81A58000710295 /* StepsModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6E0D4D8F2AA1E49100396824 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6EEEAB1C2A75A33A00BE04CB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E0D4D7B2AA1E49000396824;
+			remoteInfo = GroupsWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6E0D4D922AA1E49100396824 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6E0D4D912AA1E49100396824 /* GroupsWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		6E0D4D7C2AA1E49000396824 /* GroupsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GroupsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E0D4D7E2AA1E49000396824 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		6E0D4D802AA1E49100396824 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		6E0D4D832AA1E49100396824 /* GroupsWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsWidgetBundle.swift; sourceTree = "<group>"; };
+		6E0D4D852AA1E49100396824 /* GroupsWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		6E0D4D872AA1E49100396824 /* GroupsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsWidget.swift; sourceTree = "<group>"; };
+		6E0D4D892AA1E49100396824 /* GroupsWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = GroupsWidget.intentdefinition; sourceTree = "<group>"; };
+		6E0D4D8A2AA1E49100396824 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6E0D4D8C2AA1E49100396824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E0D4D982AA1EA5A00396824 /* GroupsWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GroupsWidgetExtension.entitlements; sourceTree = "<group>"; };
 		6E179AE72A8E877D00C18E89 /* GroupCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreationView.swift; sourceTree = "<group>"; };
 		6E27ECED2A98ABBD00A1030A /* JoinGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupView.swift; sourceTree = "<group>"; usesTabs = 1; };
 		6E27ECEF2A98ADE500A1030A /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
@@ -110,6 +156,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6E0D4D792AA1E49000396824 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E0D4D812AA1E49100396824 /* SwiftUI.framework in Frameworks */,
+				6E0D4D7F2AA1E49100396824 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6EEEAB212A75A33A00BE04CB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -132,6 +187,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E0D4D7D2AA1E49000396824 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E0D4D7E2AA1E49000396824 /* WidgetKit.framework */,
+				6E0D4D802AA1E49100396824 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6E0D4D822AA1E49100396824 /* GroupsWidget */ = {
+			isa = PBXGroup;
+			children = (
+				6E0D4D832AA1E49100396824 /* GroupsWidgetBundle.swift */,
+				6E0D4D852AA1E49100396824 /* GroupsWidgetLiveActivity.swift */,
+				6E0D4D872AA1E49100396824 /* GroupsWidget.swift */,
+				6E0D4D892AA1E49100396824 /* GroupsWidget.intentdefinition */,
+				6E0D4D8A2AA1E49100396824 /* Assets.xcassets */,
+				6E0D4D8C2AA1E49100396824 /* Info.plist */,
+			);
+			path = GroupsWidget;
+			sourceTree = "<group>";
+		};
 		6E4B7B8D2A7EFBC30080C10A /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,8 +264,11 @@
 		6EEEAB1B2A75A33A00BE04CB = {
 			isa = PBXGroup;
 			children = (
+				6E0D4D982AA1EA5A00396824 /* GroupsWidgetExtension.entitlements */,
 				6E8D5C8F2A841F0A007FD3AF /* GoogleService-Info.plist */,
 				6EEEAB262A75A33A00BE04CB /* TrackMe */,
+				6E0D4D822AA1E49100396824 /* GroupsWidget */,
+				6E0D4D7D2AA1E49000396824 /* Frameworks */,
 				6EEEAB252A75A33A00BE04CB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -197,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				6EEEAB242A75A33A00BE04CB /* TrackMe.app */,
+				6E0D4D7C2AA1E49000396824 /* GroupsWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -249,6 +330,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6E0D4D7B2AA1E49000396824 /* GroupsWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E0D4D952AA1E49100396824 /* Build configuration list for PBXNativeTarget "GroupsWidgetExtension" */;
+			buildPhases = (
+				6E0D4D782AA1E49000396824 /* Sources */,
+				6E0D4D792AA1E49000396824 /* Frameworks */,
+				6E0D4D7A2AA1E49000396824 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GroupsWidgetExtension;
+			productName = GroupsWidgetExtension;
+			productReference = 6E0D4D7C2AA1E49000396824 /* GroupsWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		6EEEAB232A75A33A00BE04CB /* TrackMe */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6EEEAB372A75A33B00BE04CB /* Build configuration list for PBXNativeTarget "TrackMe" */;
@@ -256,10 +354,12 @@
 				6EEEAB202A75A33A00BE04CB /* Sources */,
 				6EEEAB212A75A33A00BE04CB /* Frameworks */,
 				6EEEAB222A75A33A00BE04CB /* Resources */,
+				6E0D4D922AA1E49100396824 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6E0D4D902AA1E49100396824 /* PBXTargetDependency */,
 			);
 			name = TrackMe;
 			packageProductDependencies = (
@@ -290,6 +390,9 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					6E0D4D7B2AA1E49000396824 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
 					6EEEAB232A75A33A00BE04CB = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -313,11 +416,22 @@
 			projectRoot = "";
 			targets = (
 				6EEEAB232A75A33A00BE04CB /* TrackMe */,
+				6E0D4D7B2AA1E49000396824 /* GroupsWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6E0D4D7A2AA1E49000396824 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E0D4D8B2AA1E49100396824 /* Assets.xcassets in Resources */,
+				6E0D4D992AA2028E00396824 /* Assets.xcassets in Resources */,
+				6E0D4D972AA1EA1900396824 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6EEEAB222A75A33A00BE04CB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -331,12 +445,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6E0D4D782AA1E49000396824 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E0D4D862AA1E49100396824 /* GroupsWidgetLiveActivity.swift in Sources */,
+				6E0D4D882AA1E49100396824 /* GroupsWidget.swift in Sources */,
+				6E0D4D8D2AA1E49100396824 /* GroupsWidget.intentdefinition in Sources */,
+				6E0D4D962AA1E84000396824 /* GroupsModel.swift in Sources */,
+				6E0D4D842AA1E49100396824 /* GroupsWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6EEEAB202A75A33A00BE04CB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6E27ECEE2A98ABBD00A1030A /* JoinGroupView.swift in Sources */,
 				6EEEAB3E2A75C22200BE04CB /* LoginView.swift in Sources */,
+				6E0D4D8E2AA1E49100396824 /* GroupsWidget.intentdefinition in Sources */,
 				6E6BA3462A9D1CAC00763B7B /* GroupView.swift in Sources */,
 				6E4B7B912A7EFC570080C10A /* ProfileView.swift in Sources */,
 				6EEEAB3C2A75A55600BE04CB /* SplashScreen.swift in Sources */,
@@ -378,7 +505,71 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		6E0D4D902AA1E49100396824 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E0D4D7B2AA1E49000396824 /* GroupsWidgetExtension */;
+			targetProxy = 6E0D4D8F2AA1E49100396824 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		6E0D4D932AA1E49100396824 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = GroupsWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VARVZQCW82;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GroupsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GroupsWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = LeandervanAarde.TrackMe.GroupsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6E0D4D942AA1E49100396824 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = GroupsWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VARVZQCW82;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GroupsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GroupsWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = LeandervanAarde.TrackMe.GroupsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		6EEEAB352A75A33B00BE04CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -496,6 +687,7 @@
 		6EEEAB382A75A33B00BE04CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TrackMe/TrackMe.entitlements;
@@ -529,6 +721,7 @@
 		6EEEAB392A75A33B00BE04CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TrackMe/TrackMe.entitlements;
@@ -562,6 +755,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6E0D4D952AA1E49100396824 /* Build configuration list for PBXNativeTarget "GroupsWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E0D4D932AA1E49100396824 /* Debug */,
+				6E0D4D942AA1E49100396824 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6EEEAB1F2A75A33A00BE04CB /* Build configuration list for PBXProject "TrackMe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

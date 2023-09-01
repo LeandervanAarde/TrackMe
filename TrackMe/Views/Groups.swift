@@ -47,27 +47,17 @@ struct Groups: View {
                     .onDelete { indices in
                         for index in indices {
                             let group = userGroups[index]
-                            if let docID = group.id {
-                                GroupManager.leaveGroup(groupId: group.id!)
-                            }
+                            GroupManager.leaveGroup(groupId: group.id)
                         }
                     }
                 }
                 .padding(0)
-                .listStyle(PlainListStyle()) // Added list style
+                .listStyle(PlainListStyle()) 
             }
             .padding(0)
-            .background(Color.white) // Apply white background to the VStack
+            .background(Color.white)
             .onAppear {
-                GroupManager.getAllUserGroups { documents, error in
-                    if let error = error {
-                        print(error)
-                    } else if let documents = documents {
-                        GroupManager.userGroups = documents.compactMap { document in
-                            try? document.data(as: GroupsModel.self)
-                        }
-                    }
-                }
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     userGroups = GroupManager.userGroups
                     print(GroupManager.userGroups)

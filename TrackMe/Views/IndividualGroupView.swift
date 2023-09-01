@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct IndividualGroupView: View {
-    @Binding var groupId: String?
+    @Binding var groupId: String
     @StateObject var vm: GroupsViewModel = GroupsViewModel();
     @StateObject var locationManager = LocationManager()
     @State var groupData: GroupsModel?
@@ -49,7 +49,7 @@ struct IndividualGroupView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .onAppear{
                 print(String(describing: locationManager.region.span))
-                vm.getIndividualGroup(id: groupId! )
+                vm.getIndividualGroup(id: groupId )
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
                     groupData = vm.individualGroup
                     members = vm.groupMembers

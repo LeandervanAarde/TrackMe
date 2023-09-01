@@ -9,6 +9,7 @@ import Firebase
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 import SwiftUI
+import WidgetKit
 
 class GroupsViewModel: ObservableObject{
     private var db = Firestore.firestore()
@@ -28,12 +29,14 @@ class GroupsViewModel: ObservableObject{
                             let members = doc["GroupMembers"] as? [String]
                             let image = doc["GroupImage"] as? String
                             let code = doc["GroupCode"] as? String
+                            let id = document.documentID
                             
-                            self.userGroups.append(GroupsModel(GroupName: name ?? "", GroupMembers: members ?? [""] , GroupImage: image ?? "", GroupCode: code ?? ""))
+                            self.userGroups.append(GroupsModel( id: id , GroupName: name ?? "", GroupMembers: members ?? [""] , GroupImage: image ?? "", GroupCode: code ?? ""))
                         }
                     }
                 }
             }
+            self.storeWidgetGroups()
         }
     }
     
@@ -50,6 +53,7 @@ class GroupsViewModel: ObservableObject{
                 print("error adding doc", error)
             } else{
                 print("group \(groupName) added to db")
+                self.storeWidgetGroups()
             }
         }
         
@@ -68,8 +72,11 @@ class GroupsViewModel: ObservableObject{
                 completion(nil, error)
             } else {
                 completion(snapshot?.documents, nil)
+                self.storeWidgetGroups()
             }
         }
+        
+        
     }
     
     public func getIndividualGroup(id: String){
@@ -88,7 +95,7 @@ class GroupsViewModel: ObservableObject{
                     let image = groupData["GroupImage"] as? String
                     let code = groupData["GroupCode"] as? String
                     
-                    self.individualGroup = GroupsModel(GroupName: name ?? "", GroupMembers: members ?? [""] , GroupImage: image ?? "", GroupCode: code ?? "")
+                    self.individualGroup = GroupsModel(id: id , GroupName: name ?? "", GroupMembers: members ?? [""] , GroupImage: image ?? "", GroupCode: code ?? "")
                     if let groupMembers = members{
                         for member in groupMembers {
                             getUserDetails(userId: member)
@@ -154,6 +161,7 @@ class GroupsViewModel: ObservableObject{
                     print("Error upating \(error.localizedDescription)")
                 } else {
                     print("updated doc")
+                    self.storeWidgetGroups()
                 }
             }
         }
@@ -168,6 +176,7 @@ class GroupsViewModel: ObservableObject{
                 print("Error upating \(error.localizedDescription)")
             } else {
                 print("updated doc")
+                self.storeWidgetGroups()
             }
         }
     }
@@ -180,6 +189,16 @@ class GroupsViewModel: ObservableObject{
         }
         return s
     }
+    
+    func storeWidgetGroups(){
+        if let encoded = try? JSONEncoder().encode(userGroups){
+            //Store the data to the app group
+            UserDefaults(suiteName: "group.LeandervanAarde.TrackMe")!.set(encoded, forKey: "groups")
+            print("USERGROUPS: \(userGroups.count)")
+            print("COUNT: \(encoded.count)")
+        }
+        // optional: Call a refresh to reload our widget.
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+
 }
-
-
